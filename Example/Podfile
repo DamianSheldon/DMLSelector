@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'DMLSelector_Example' do
+  pod 'DMLSelector', :path => '../'
+
+  target 'DMLSelector_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
