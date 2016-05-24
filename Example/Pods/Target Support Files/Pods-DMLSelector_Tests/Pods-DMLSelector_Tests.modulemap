@@ -1,0 +1,6 @@
+framework module Pods_DMLSelector_Tests {
+  umbrella header "Pods-DMLSelector_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

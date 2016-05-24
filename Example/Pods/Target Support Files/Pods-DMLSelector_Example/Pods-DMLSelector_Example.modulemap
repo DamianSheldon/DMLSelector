@@ -1,0 +1,6 @@
+framework module Pods_DMLSelector_Example {
+  umbrella header "Pods-DMLSelector_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module DMLSelector {
+  umbrella header "DMLSelector-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,16 @@
+PODS:
+  - DMLSelector (0.1.0)
+
+DEPENDENCIES:
+  - DMLSelector (from `../`)
+
+EXTERNAL SOURCES:
+  DMLSelector:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DMLSelector: e020f30270dc2665be8be4ed50d3f1962b55aa5c
+
+PODFILE CHECKSUM: 5f8d1b0b7a9798f26ed954c6b284a389af25cae7
+
+COCOAPODS: 1.0.0
