@@ -88,7 +88,12 @@ static NSString *const sSingleTableCellIdentifier = @"sSingleTableCellIdentifier
     [tableView reloadData];
     
     // Update component title, indicator direction
-    [self.selector updateComponentAtIndex:self.componentIndex withTitle:optionText indicatorDirection:DMLSelectorComponentSelectionIndicatorDirectionDirectionUp];
+    if (indexPath.row > 0) {
+        [self.selector updateComponentAtIndex:self.componentIndex withTitle:optionText indicatorDirection:DMLSelectorComponentSelectionIndicatorDirectionDown];
+    }
+    else {
+        [self.selector updateComponentAtIndex:self.componentIndex withTitle:optionText indicatorDirection:DMLSelectorComponentSelectionIndicatorDirectionUp];
+    }
     
     // Collapse component
     DMLSelectorIndexPath *selectorIndexPath = [DMLSelectorIndexPath indexPathWithComponentIndex:self.componentIndex forRow:indexPath.row inSection:indexPath.section];

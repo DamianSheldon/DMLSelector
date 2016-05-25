@@ -189,7 +189,7 @@ static NSString *const sSelectorBarCellIdentifier = @"sSelectorBarCellIdentifier
     }
     
     // Collapse previous component if need
-    void (^collapasePreviousComponent)() = ^(void) {
+    void (^collapasePreviousComponent)(BOOL deselected) = ^(BOOL deselected) {
         NSLayoutConstraint *componentHeightConstraint = self.componentHeightConstraints[indexPath];
         self.previousComponentHeight = componentHeightConstraint.constant;
         componentHeightConstraint.constant = 0;
@@ -205,7 +205,10 @@ static NSString *const sSelectorBarCellIdentifier = @"sSelectorBarCellIdentifier
         
         [self layoutIfNeeded];
         
-        [cell setSelected:NO animated:NO];
+        if (deselected) {
+            [cell setSelected:NO animated:NO];
+        }
+        
         self.expanded = NO;
         if (trigger) {
             [self invalidateIntrinsicContentSize];
@@ -214,7 +217,7 @@ static NSString *const sSelectorBarCellIdentifier = @"sSelectorBarCellIdentifier
     
     if (self.currentComponent == component) {
         // Collapse already selected component
-        collapasePreviousComponent();
+        collapasePreviousComponent(YES);
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             NSArray *previousCompentConstraints = self.componentConstraints[indexPath];
@@ -232,7 +235,7 @@ static NSString *const sSelectorBarCellIdentifier = @"sSelectorBarCellIdentifier
     else {
         // Collapase previous component
         if (self.currentComponent) {
-            collapasePreviousComponent();
+            collapasePreviousComponent(NO);
         }
         
         // Expand current select component
@@ -308,6 +311,16 @@ static NSString *const sSelectorBarCellIdentifier = @"sSelectorBarCellIdentifier
     
     DMLSelectorBarCell *cell = [self.selectorBarView cellForItemAtIndexPath:indexPath];
     cell.textLabel.text = title;
+    
+    switch (direction) {
+        case DMLSelectorComponentSelectionIndicatorDirectionUp:
+            [cell updateIndicatorDirection:DMLSelectorBarCellIndicatorDirectionUp];
+            break;
+            
+        case DMLSelectorComponentSelectionIndicatorDirectionDown:
+            [cell updateIndicatorDirection:DMLSelectorBarCellIndicatorDirectionDown];
+            break;
+    }
 }
 
 - (void)collapseComponentWithSelectedIndexPath:(DMLSelectorIndexPath *)indexPath

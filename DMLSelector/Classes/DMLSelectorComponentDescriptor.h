@@ -11,7 +11,7 @@
 #import "DMLSelectorOption.h"
 
 typedef NS_ENUM(NSUInteger, DMLSelectorComponentSelectionIndicatorDirection) {
-    DMLSelectorComponentSelectionIndicatorDirectionDirectionUp,
+    DMLSelectorComponentSelectionIndicatorDirectionUp,
     DMLSelectorComponentSelectionIndicatorDirectionDown
 };
 
