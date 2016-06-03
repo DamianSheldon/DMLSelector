@@ -58,7 +58,7 @@ static NSString *const sSelectorBarCellIdentifier = @"sSelectorBarCellIdentifier
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        self.backgroundColor = [UIColor lightGrayColor];
+        self.backgroundColor = [[UIColor alloc] initWithWhite:1 alpha:0.5];
         
         _components = [NSMutableDictionary dictionaryWithCapacity:8];
         _componentConstraints = [NSMutableDictionary dictionaryWithCapacity:8];
