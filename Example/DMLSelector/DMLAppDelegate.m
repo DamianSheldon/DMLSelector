@@ -7,12 +7,20 @@
 //
 
 #import "DMLAppDelegate.h"
+#import "DMLViewController.h"
 
 @implementation DMLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    DMLViewController *vc = [DMLViewController new];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = vc;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

@@ -23,6 +23,8 @@
 {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self.view addSubview:self.selector];
     
     [self configureConstraintsForSelector];
