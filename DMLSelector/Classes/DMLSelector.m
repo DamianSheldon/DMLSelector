@@ -133,6 +133,8 @@ static NSString *const sSelectorBarCellIdentifier = @"sSelectorBarCellIdentifier
     
     DMLSelectorComponentDescriptor *componentDescriptor = [self.dataSource selector:self componentDescriptorForOptionAtIndex:indexPath.row];
     
+    cell.notDisplayArrow = componentDescriptor.notDisplayArrow;
+    
     if (componentDescriptor.selectedTextColor) {
         cell.selectedTextColor = componentDescriptor.selectedTextColor;
     }

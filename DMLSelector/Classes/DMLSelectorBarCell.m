@@ -47,7 +47,7 @@
         layer.path = path.CGPath;
         layer.lineWidth = 0.8;
         layer.fillColor = [UIColor lightGrayColor].CGColor;
-        [self.layer addSublayer:layer];
+//        [self.layer addSublayer:layer];
         
         _indicatorLayer = layer;
     }
@@ -66,41 +66,35 @@
 
 - (void)layoutSubviews
 {
-    CGRect stringRect = [self.textLabel.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.textLabel.font} context:nil];
-    stringRect = CGRectIntegral(stringRect);
-    
-    CGPoint indicatorPosition;
-    
-    switch (self.direction) {
-        case DMLSelectorBarCellIndicatorDirectionUp: {
-            self.indicatorLayer.transform = CATransform3DRotate(self.indicatorLayer.transform, M_PI, 0, 0, 1);
-            
-            indicatorPosition = CGPointMake(0.5 * (CGRectGetWidth(self.frame) + CGRectGetWidth(stringRect)) + 10, 0.5 * CGRectGetHeight(self.frame));
-            
-            break;
+    if (!self.notDisplayArrow) {
+        if (!self.indicatorLayer.superlayer) {
+            [self.layer addSublayer:self.indicatorLayer];
         }
-            
-        case DMLSelectorBarCellIndicatorDirectionDown: {
-            self.indicatorLayer.transform = CATransform3DIdentity;
-            indicatorPosition = CGPointMake(0.5 * (CGRectGetWidth(self.frame) + CGRectGetWidth(stringRect)) + 2, 0.5 * CGRectGetHeight(self.frame) - 2.5);
-
-            break;
+        
+        CGRect stringRect = [self.textLabel.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.textLabel.font} context:nil];
+        stringRect = CGRectIntegral(stringRect);
+        
+        CGPoint indicatorPosition;
+        
+        switch (self.direction) {
+            case DMLSelectorBarCellIndicatorDirectionUp: {
+                self.indicatorLayer.transform = CATransform3DRotate(self.indicatorLayer.transform, M_PI, 0, 0, 1);
+                
+                indicatorPosition = CGPointMake(0.5 * (CGRectGetWidth(self.frame) + CGRectGetWidth(stringRect)) + 10, 0.5 * CGRectGetHeight(self.frame));
+                
+                break;
+            }
+                
+            case DMLSelectorBarCellIndicatorDirectionDown: {
+                self.indicatorLayer.transform = CATransform3DIdentity;
+                indicatorPosition = CGPointMake(0.5 * (CGRectGetWidth(self.frame) + CGRectGetWidth(stringRect)) + 2, 0.5 * CGRectGetHeight(self.frame) - 2.5);
+                
+                break;
+            }
         }
+        
+        self.indicatorLayer.position = indicatorPosition;
     }
-    
-    self.indicatorLayer.position = indicatorPosition;
-    
-    /*
-     struct CATransform3D
-     {
-     CGFloat m11, m12, m13, m14;
-     CGFloat m21, m22, m23, m24;
-     CGFloat m31, m32, m33, m34;
-     CGFloat m41, m42, m43, m44;
-     };
-     
-     typedef struct CATransform3D CATransform3D;
-     */
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

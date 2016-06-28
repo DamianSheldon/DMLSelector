@@ -12,12 +12,11 @@
 @implementation DMLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-    
+{    
     DMLViewController *vc = [DMLViewController new];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     

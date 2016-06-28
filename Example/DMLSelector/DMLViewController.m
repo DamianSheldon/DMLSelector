@@ -114,6 +114,7 @@
         
         DMLSelectorComponentDescriptor *component3 = [DMLSelectorComponentDescriptor selectorComponentDescriptorWithTitle:@"智能排序" componentType:DMLSelectorComponentTypeCollection];
         component3.selectedTextColor = [UIColor purpleColor];
+        component3.notDisplayArrow = YES;
         
         DMLSelectorOption *option3_0 = [[DMLSelectorOption alloc] initWithMasterText:@"仅看可下单的大师" detailTexts:@[@"是", @"否"]];
         

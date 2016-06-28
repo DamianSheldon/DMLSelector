@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, DMLSelectorComponentSelectionIndicatorDirection) {
 
 @property (nonatomic, readonly, copy) NSString *componentType;
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic) BOOL notDisplayArrow;
 @property (nonatomic) DMLSelectorComponentSelectionIndicatorDirection direction;
 
 @property (nonatomic) UIColor *textColor;

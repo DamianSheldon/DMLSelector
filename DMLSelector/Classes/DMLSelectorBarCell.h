@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, DMLSelectorBarCellIndicatorDirection) {
 
 @property (nonatomic, readonly) UILabel *textLabel;
 @property (nonatomic) UIColor *selectedTextColor;
+@property (nonatomic) BOOL notDisplayArrow;
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 
