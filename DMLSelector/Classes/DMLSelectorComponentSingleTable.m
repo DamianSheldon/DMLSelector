@@ -81,9 +81,11 @@ static NSString *const sSingleTableCellIdentifier = @"sSingleTableCellIdentifier
 {
     NSLog(@"%s", __func__);
     
-    NSString *optionText = self.option.detailTexts[indexPath.row];
+//    NSString *optionText = self.option.detailTexts[indexPath.row];
     
-    self.componentDescriptor.displayTextForSelectedOption = optionText;
+//    self.componentDescriptor.displayTextForSelectedOption = optionText;
+    
+    NSString *optionText = self.componentDescriptor.displayTextForSelectedOption;
     
     [tableView reloadData];
     

@@ -115,6 +115,7 @@
 {
     if (direction != self.direction) {
         self.direction = direction;
+        [self setNeedsLayout];
     }
 }
 
