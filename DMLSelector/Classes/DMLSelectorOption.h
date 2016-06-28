@@ -12,6 +12,8 @@
 
 - (instancetype)initWithMasterText:(NSString *)masterText detailTexts:(NSArray *)detailTexts;
 
+@property(nonatomic, getter=isExclusiveSelect) BOOL exclusiveSelect;
+
 @property (nonatomic, copy) NSString *masterText;
 @property (nonatomic, copy) NSArray *detailTexts;
 

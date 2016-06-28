@@ -117,9 +117,11 @@
         component3.notDisplayArrow = YES;
         
         DMLSelectorOption *option3_0 = [[DMLSelectorOption alloc] initWithMasterText:@"仅看可下单的大师" detailTexts:@[@"是", @"否"]];
+        option3_0.exclusiveSelect = YES;
         
-        DMLSelectorOption *option3_1 = [[DMLSelectorOption alloc] initWithMasterText:@"大师等级" detailTexts:@[@"资深", @"高级", @"中级"]];
-        
+        DMLSelectorOption *option3_1 = [[DMLSelectorOption alloc] initWithMasterText:@"大师等级" detailTexts:@[@"资深", @"高级", @"中级", @"初级"]];
+        option3_1.exclusiveSelect = YES;
+
         component3.options = @[option3_0, option3_1];
 
         _selectorComponentDescriptors = @[component1, component2, component3];

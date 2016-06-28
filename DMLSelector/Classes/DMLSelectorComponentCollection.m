@@ -188,74 +188,65 @@ referenceSizeForHeaderInSection:(NSInteger)section
     DMLSelectorComponentCollectionCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     [cell setChecked:!cell.isChecked animated:YES];
     
-    switch (indexPath.section) {
-        case 0: {
-            // Section 0 is exclusive selection
-            for (NSUInteger i = 0; i < self.componentDescriptor.options.count; i ++) {
-                if (i != indexPath.row) {
-                    NSIndexPath *idxPath = [NSIndexPath indexPathForRow:i inSection:0];
-                    DMLSelectorComponentCollectionCell *cell = [collectionView cellForItemAtIndexPath:idxPath];
-                    [cell setChecked:NO animated:YES];
-                }
+    DMLSelectorOption *option = self.componentDescriptor.options[indexPath.section];
+    
+    NSString *key = option.masterText;
+    NSString *value = option.detailTexts[indexPath.row];
+    
+    if (option.exclusiveSelect) {
+        // Section is exclusive selection
+        for (NSUInteger i = 0; i < option.detailTexts.count; i ++) {
+            if (i != indexPath.row) {
+                NSIndexPath *idxPath = [NSIndexPath indexPathForRow:i inSection:indexPath.section];
+                DMLSelectorComponentCollectionCell *cell = [collectionView cellForItemAtIndexPath:idxPath];
+                [cell setChecked:NO animated:YES];
             }
+        }
+        
+        // Update select value
+        if (cell.isChecked) {
+            [self.values setObject:value forKey:key];
+        }
+        else {
+            [self.values removeObjectForKey:key];
+        }
+    }
+    else {
+        // Update select value
+        
+        if (cell.isChecked) {
+            // Add
+            NSMutableArray *storeValues = self.values[key];
+            if (storeValues) {
+                [storeValues addObject:value];
+                
+                [self.values setObject:storeValues forKey:key];
+            }
+            else {
+                NSMutableArray *valueArray = [NSMutableArray arrayWithCapacity:option.detailTexts.count];
+                [valueArray addObject:value];
+                [self.values setObject:valueArray forKey:key];
+            }
+        }
+        else {
+            // Remove
+            NSMutableArray *storeValues = self.values[key];
+            NSAssert(storeValues != nil, @"Store value must not be nil!");
             
-            // Update select value
-            DMLSelectorOption *option = self.componentDescriptor.options[indexPath.section];
-            NSString *key = option.masterText;
-            NSString *value = option.detailTexts[indexPath.row];
-            
-            if (cell.isChecked) {
-                [self.values setObject:value forKey:key];
+            if (storeValues.count > 1) {
+                NSArray *enumerateArray = storeValues.copy;
+                
+                [enumerateArray enumerateObjectsUsingBlock:^(NSString *  _Nonnull string, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([string isEqualToString:value]) {
+                        [storeValues removeObjectAtIndex:idx];
+                    }
+                }];
+                
+                [self.values setObject:storeValues forKey:key];
             }
             else {
                 [self.values removeObjectForKey:key];
             }
-            
-            break;
-        }
-            
-        default: {
-            // Update select value
-            DMLSelectorOption *option = self.componentDescriptor.options[indexPath.section];
-            NSString *key = option.masterText;
-            NSString *value = option.detailTexts[indexPath.row];
-            
-            if (cell.isChecked) {
-                // Add
-                NSMutableArray *storeValues = self.values[key];
-                if (storeValues) {
-                    [storeValues addObject:value];
-                    
-                    [self.values setObject:storeValues forKey:key];
-                }
-                else {
-                    NSMutableArray *valueArray = [NSMutableArray arrayWithCapacity:option.detailTexts.count];
-                    [valueArray addObject:value];
-                    [self.values setObject:valueArray forKey:key];
-                }
-            }
-            else {
-                // Remove
-                NSMutableArray *storeValues = self.values[key];
-                NSAssert(storeValues != nil, @"Store value must not be nil!");
-                
-                if (storeValues.count > 1) {
-                    NSArray *enumerateArray = storeValues.copy;
-                    
-                    [enumerateArray enumerateObjectsUsingBlock:^(NSString *  _Nonnull string, NSUInteger idx, BOOL * _Nonnull stop) {
-                        if ([string isEqualToString:value]) {
-                            [storeValues removeObjectAtIndex:idx];
-                        }
-                    }];
-                    
-                    [self.values setObject:storeValues forKey:key];
-                }
-                else {
-                    [self.values removeObjectForKey:key];
-                }
-            }
-            
-            break;
         }
     }
 }
