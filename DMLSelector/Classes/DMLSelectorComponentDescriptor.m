@@ -20,7 +20,6 @@
     self = [super init];
     if (self) {
         _title = [title copy];
-        _displayTextForSelectedOption = [title copy];
         _componentType = [componentType copy];
     }
     return self;
