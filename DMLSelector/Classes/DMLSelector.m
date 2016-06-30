@@ -30,7 +30,7 @@ static NSString *const sSelectorBarCellIdentifier = @"sSelectorBarCellIdentifier
 @property (nonatomic) UIView<DMLSelectorComponent> *currentComponent;
 @property (nonatomic) CGFloat previousComponentHeight;
 @property (nonatomic) NSMutableDictionary *componentHeightConstraints;
-
+@property (nonatomic, copy) NSIndexPath *lastSelectedIndexPath;
 @end
 
 @implementation DMLSelector
@@ -158,6 +158,8 @@ static NSString *const sSelectorBarCellIdentifier = @"sSelectorBarCellIdentifier
             [barCell setSelected:NO animated:YES];
         }
     }];
+    
+    self.lastSelectedIndexPath = indexPath;
     
     DMLSelectorComponentDescriptor *componentDescriptor = [self.dataSource selector:self componentDescriptorForOptionAtIndex:indexPath.row];
 
@@ -304,6 +306,58 @@ static NSString *const sSelectorBarCellIdentifier = @"sSelectorBarCellIdentifier
     
     return CGSizeMake(CGRectGetWidth(fullScreenRect), sIntrinsicContentSizeCollapseHeight);
 }
+
+#pragma mark - Responding to Touch Events
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    if (self.currentComponent) {
+        self.currentComponent = nil;
+        
+        NSLayoutConstraint *componentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
+        self.previousComponentHeight = componentHeightConstraint.constant;
+        componentHeightConstraint.constant = 0;
+        
+        if ([self.currentComponent respondsToSelector:@selector(willDisappear)]) {
+            
+            [self.currentComponent willDisappear];
+        }
+        
+        self.currentComponent = nil;
+        
+        self.wrapperHeightConstraint.constant = 0;
+        
+        [self layoutIfNeeded];
+        
+        DMLSelectorBarCell *cell = [self.selectorBarView cellForItemAtIndexPath:self.lastSelectedIndexPath];
+        
+        [cell setSelected:NO animated:NO];
+
+        
+        self.expanded = NO;
+        [self invalidateIntrinsicContentSize];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSArray *previousCompentConstraints = self.componentConstraints[self.lastSelectedIndexPath];
+            
+            [self.currentComponent removeFromSuperview];
+            [self.wrapper removeConstraints:previousCompentConstraints];
+            
+            // Restore component's height
+            NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
+            previousComponentHeightConstraint.constant = self.previousComponentHeight;
+        });
+    }
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{ }
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{ }
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{ }
 
 #pragma mark - Public Methods
 

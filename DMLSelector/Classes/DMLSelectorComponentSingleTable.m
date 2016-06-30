@@ -81,20 +81,18 @@ static NSString *const sSingleTableCellIdentifier = @"sSingleTableCellIdentifier
 {
     NSLog(@"%s", __func__);
     
-//    NSString *optionText = self.option.detailTexts[indexPath.row];
+    NSString *optionText = self.option.detailTexts[indexPath.row];
     
-//    self.componentDescriptor.displayTextForSelectedOption = optionText;
-    
-    NSString *optionText = self.componentDescriptor.displayTextForSelectedOption;
-    
+    self.componentDescriptor.displayTextForSelectedOption = optionText;
+        
     [tableView reloadData];
     
     // Update component title, indicator direction
     if (indexPath.row > 0) {
-        [self.selector updateComponentAtIndex:self.componentIndex withTitle:optionText indicatorDirection:DMLSelectorComponentSelectionIndicatorDirectionDown];
+        [self.selector updateComponentAtIndex:self.componentIndex withTitle:self.componentDescriptor.title indicatorDirection:DMLSelectorComponentSelectionIndicatorDirectionDown];
     }
     else {
-        [self.selector updateComponentAtIndex:self.componentIndex withTitle:optionText indicatorDirection:DMLSelectorComponentSelectionIndicatorDirectionUp];
+        [self.selector updateComponentAtIndex:self.componentIndex withTitle:self.componentDescriptor.title indicatorDirection:DMLSelectorComponentSelectionIndicatorDirectionUp];
     }
     
     // Collapse component
