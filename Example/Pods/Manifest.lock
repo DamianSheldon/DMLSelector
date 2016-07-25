@@ -1,5 +1,5 @@
 PODS:
-  - DMLSelector (0.1.0)
+  - DMLSelector (0.1.5)
 
 DEPENDENCIES:
   - DMLSelector (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DMLSelector: e020f30270dc2665be8be4ed50d3f1962b55aa5c
+  DMLSelector: 39a2e3ee99c4ec56db32706ef961a524969890ca
 
 PODFILE CHECKSUM: 5f8d1b0b7a9798f26ed954c6b284a389af25cae7
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1

@@ -9,9 +9,10 @@
 #import "DMLSelectorComponentDescriptor.h"
 #import "DMLSelectorComponentDoubleTable.h"
 #import "DMLSelectorComponentSingleTable.h"
+#import "DMLSelectorImageBarCell.h"
 #import "DMLSelectorIndexPath.h"
-#import "DMLSelectorOption.h"
+#import "DMLSelectorSection.h"
+#import "UIColor+DMLSelector.h"
 
-FOUNDATION_EXPORT double DMLSelectorVersionNumber;
-FOUNDATION_EXPORT const unsigned char DMLSelectorVersionString[];
-
+FOUNDATION_EXPORT double                DMLSelectorVersionNumber;
+FOUNDATION_EXPORT const unsigned char   DMLSelectorVersionString[];

@@ -7,115 +7,133 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03424B6D13E031545AABE62F00E8D66E /* DMLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = A30EDDD56F5EEDCF8C9C1E8AEFC3D5AE /* DMLSelector.m */; };
 		078EED8159C9BBF6BD74C6AA172F4DDC /* Pods-DMLSelector_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EA2A8610D81726F5BFC1AECA2FA355D0 /* Pods-DMLSelector_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0E0795D110D2931269550DEB8CA7AD50 /* Checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6AC8289E61F553924690321A2E5C88F9 /* Checked@2x.png */; };
-		12E62C85C16A271CAD500E5442476DAA /* DMLSelectorBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7338387DDDCE8FE99D593F24FD49CFF /* DMLSelectorBarCell.m */; };
-		1E353237ADE98ECCE449D141AD6D4E11 /* DMLSelectorComponentSingleTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA97D99D1DA80A97237F63F051B3C8E /* DMLSelectorComponentSingleTable.m */; };
-		239323033E0D0E084BF8CF45899F5A60 /* DMLSelectorIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF5FC5A5420BECDDBD24E1E84274908 /* DMLSelectorIndexPath.m */; };
-		2CBE65747E1FC1C541F8175D01314029 /* DMLSelectorIndexPath.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B6B1FEF7C242D6E592555F38BABAD02 /* DMLSelectorIndexPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C23A58C3AFB9E2DF92A752BC2ACD3A0 /* DMLSelectorSection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7617FB548E6846826C9C12BE6A2FCD2C /* DMLSelectorSection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		26C907229263B198589D2C6C6E5972A8 /* DMLSelectorImageBarCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC830F7F17777ABC0EA22FF0DC83017 /* DMLSelectorImageBarCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CC54B63A20F747206351884E5359401 /* DMLSelectorCollectionSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B91B7EE9ABAFDD7E997EF6E50FA75C /* DMLSelectorCollectionSectionHeader.m */; };
 		3236B0477F09E24162B56FCF0574872D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		3C500D6C8CF1E922A90BC0951E25C180 /* DMLSelectorComponentDoubleTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B1E072C134149672A4B619F2A1A32B /* DMLSelectorComponentDoubleTable.m */; };
-		4AA33F0D4BEB0A4CF940DD0133530BA4 /* DMLSelectorCollectionSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B88CFA1B917ED0AF9DE07053D15D63 /* DMLSelectorCollectionSectionHeader.m */; };
-		55AC518B6BBDE60E96DEFFC01214963A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		6A47DB87B9C04B5316E16E23EE546DE1 /* DMLSelector-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6DDBD4D2D1294E4A3DB48984CBA5A9 /* DMLSelector-dummy.m */; };
-		73D83FFD1B6BEF25ABAFD0919708FC32 /* DMLSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = D50258E00AB1DAE7515EA0AC5E351D5C /* DMLSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		791447DE658079190EAE99C4996EC0E2 /* DMLSelectorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C48426146CBC42F5C6EE083129E0F5 /* DMLSelectorComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7ABEEABF726A5F3E878DC426D420A5B2 /* DMLSelectorComponentDoubleTable.h in Headers */ = {isa = PBXBuildFile; fileRef = E75320185C875B8685E9C1DFD3085C47 /* DMLSelectorComponentDoubleTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7CB9565F34E3BAFF4AC648FC105273C3 /* DMLSelectorComponentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4257FCCF9C236AA93698FDF591560B /* DMLSelectorComponentCollectionCell.m */; };
-		845CE79F0661F02E37155AD448DA447B /* DMLSelectorOption.h in Headers */ = {isa = PBXBuildFile; fileRef = DEF18D74AF7032C5E32E8B45EE94D57E /* DMLSelectorOption.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B87B004327E34D18F85185E97AF1AC7 /* DMLSelectorComponentCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CB85EB1F8573A70A4D5FBB3C2778AE6 /* DMLSelectorComponentCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9CD17450DBBDCDDBA055AED0841CC1F5 /* DMLSelectorComponentDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 191BB9E126CCE93D3ED26209139BD627 /* DMLSelectorComponentDescriptor.m */; };
-		A03DA991E2D0AEF086D415FDBE3A6130 /* DMLSelectorCollectionSectionHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = FC282812DCD2B20B98796F7E14AAFAA7 /* DMLSelectorCollectionSectionHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A63A1785B4B31F36DE177D100317CEC6 /* DMLSelectorBarCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 29F05AC35E588D4951609098D636939C /* DMLSelectorBarCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		329AB0DEB74DE51A77379C2EDF16A7BB /* DMLSelector-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6DDBD4D2D1294E4A3DB48984CBA5A9 /* DMLSelector-dummy.m */; };
+		33863CC56BD850100551A7F1272AA1B6 /* DMLSelectorComponentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E098B472D4FBBBB41139236C555D857 /* DMLSelectorComponentCollectionCell.m */; };
+		3A52ED4BF14EBC94C006AD0F706AE623 /* DMLSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 47437354AF39D11327AB5165233C4784 /* DMLSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C397D1BCF8EDCCD2110FDBFF20C8CA8 /* DMLSelectorImageBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEE31831636D6FF0C0F8248CD4633B1 /* DMLSelectorImageBarCell.m */; };
+		3F13F22B02CA0C40A13BA363866881A4 /* Checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA2AEC31AEF739B1AE2917E08D91749E /* Checked@2x.png */; };
+		40691EB65C6B04E7A0CA032372FF8E4C /* DMLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394DD39E91C92AB718FC23F03689C0C /* DMLSelector.m */; };
+		415CBD4A2D6E979FD306B400ABE80121 /* DMLSelectorComponentDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D68C5921B1569C1E064EAD8AD5F7E1A9 /* DMLSelectorComponentDescriptor.m */; };
+		458C495DF41E87C0B8D7768E4AD91AB3 /* DownArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C85BF0A5294DC1DFA53C2E0991E1DD7 /* DownArrow@3x.png */; };
+		53A86672EAD5E7C0D8F6981A0A360AC9 /* DMLSelectorBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25247D24F561D1E8C8C7A7886439E894 /* DMLSelectorBarCell.m */; };
+		587F45011D41AE1200CA323C /* DMLSelectorComponentDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A97FAC9DEF5B704E119A5BD8ED7C27C /* DMLSelectorComponentDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		587F45031D41B14A00CA323C /* DMLSelectorBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 587F45021D41B14A00CA323C /* DMLSelectorBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6629C4791FE8041FDC76E13A5DB8A245 /* DMLSelectorComponentSingleTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 1017C646E65A674DC05D438519473344 /* DMLSelectorComponentSingleTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6BE33AC394047475D8F4E0EE0198EC78 /* DMLSelectorIndexPath.h in Headers */ = {isa = PBXBuildFile; fileRef = B98B2ACDDE15C8AE03EFF100BB6F2245 /* DMLSelectorIndexPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75A47821882B9A0EDCE9D3CC3DF569F0 /* UIColor+DMLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DD44A38A2304CEC7411C1EAB12F1F8 /* UIColor+DMLSelector.m */; };
+		787F50569D726947516E62A8C7F6AF84 /* UpArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2998DAFB07553C622529B7E94C89F67E /* UpArrow@2x.png */; };
+		7922B893162959D76E780B53F4C81E8E /* DMLSelectorSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 92172D89C067BCF74EE3A0CDD6D2A6F8 /* DMLSelectorSection.m */; };
+		874CCB780D7345267196D591F3C6BA42 /* DMLSelectorComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = C850F1B97DFC4B6F7492E71540DB5F8E /* DMLSelectorComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B0BA53ECFF33FE5C9FF8CB91941C269 /* UIColor+DMLSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = DAA08A8DF40F4D0939D731562E7064A6 /* UIColor+DMLSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98B355771D95186EBA7D8E688D073007 /* DownArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAFC5198930D27D38671D354B2744403 /* DownArrow@2x.png */; };
+		A488F9B1663C57B9A7FD5ADC372EF22B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		B0832AEFAAA8545A0E6EC7620ED7FB61 /* Pods-DMLSelector_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB6160A99593C5D9D1D4E5FB59BAAFE /* Pods-DMLSelector_Example-dummy.m */; };
+		B1482F1CE1E365AFD6518D5EE4B92605 /* UpArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41AE75876B597B05EE42FAB9A16D287F /* UpArrow@3x.png */; };
+		B1BD3BD8F49D7508B5E621EE9CE7D502 /* DMLSelectorComponentDoubleTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 0558A969A3F2946B160EBA242244B7EE /* DMLSelectorComponentDoubleTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3FA1BE2D7F37F81FD05D7DD5E10150F /* DMLSelectorComponentCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 552BD06E74649989D1B53FCD9CF62BBB /* DMLSelectorComponentCollectionCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B46846B161FD4B9CA7A3110126035061 /* DMLSelectorComponentCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 19B3C15399AA70B2BFF7D54A8E2359B5 /* DMLSelectorComponentCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B78E705533F737F5389E476361D79576 /* Pods-DMLSelector_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A65EF4DAC4D009584BA01B7723410525 /* Pods-DMLSelector_Tests-dummy.m */; };
+		BE5254BC040B297C3F4E4659655AA3C5 /* DMLSelectorIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB05250DDA171F4F047942E9AACAAAE /* DMLSelectorIndexPath.m */; };
 		C03BE21D312890EAECF361DE427250DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		C4D1AFEDD0C44F7FB6746B767D9A1C89 /* DMLSelectorComponentCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A2170F64FE0928360C6B7753144851D2 /* DMLSelectorComponentCollectionCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C9A5E51EC2C3BF56E0FD568EB92FF643 /* DMLSelectorComponentCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EC99D067C5A154F478825B09A01B87 /* DMLSelectorComponentCollection.m */; };
-		CB494E3FF35DB26389716A47F373C360 /* Checked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7EC2631EAF436EC058698FC6E050F6 /* Checked@3x.png */; };
+		C282EA95544647774302542ACEBF1AD8 /* DMLSelectorComponentDoubleTable.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B9E3CB1B40065C0D3963A0A5EF083B /* DMLSelectorComponentDoubleTable.m */; };
 		CBAB0CCABE25CD8F4FE355947197A4C6 /* Pods-DMLSelector_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 276FD6E183E4C3C19CDD04E902953737 /* Pods-DMLSelector_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4CD82C9CB5D9166234863A5E998A6BC /* DMLSelector.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AD7713348A88980F014EAFC7CEB80418 /* DMLSelector.bundle */; };
-		D9CE9407A961AD1CCA2C9A563D6C316D /* DMLSelectorComponentSingleTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3B252A60D94784FD002BBF30916EBB /* DMLSelectorComponentSingleTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E41AFBBE54564936D09C2059037970DC /* DMLSelectorOption.m in Sources */ = {isa = PBXBuildFile; fileRef = B15FDF3477C9CF2053B12F971D1F6E2C /* DMLSelectorOption.m */; };
-		F269EDC33A51C0CBA2251F13183B1660 /* DMLSelector-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F98C8E6BC6CA0EEE040E158CCC43FC7 /* DMLSelector-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F7D0DE89F623281A5498A9D1C5ADBD39 /* DMLSelectorComponentDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = E1D10641EBFC4493958CD14115D87F12 /* DMLSelectorComponentDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD344F99A160D02B9CBC158E7D380E19 /* DMLSelectorComponentSingleTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FCE1668EC3B6838CBA1E07630422DC /* DMLSelectorComponentSingleTable.m */; };
+		CDE19C829B8675954027FDAA7A7561E9 /* DMLSelectorComponentCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDB30E6CA98E52110B20CB377908536 /* DMLSelectorComponentCollection.m */; };
+		DCFAB181A23A9BF630374EEF6AB67D31 /* DMLSelector-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F98C8E6BC6CA0EEE040E158CCC43FC7 /* DMLSelector-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E4B28DA5BD0128EE19054B7624C84F57 /* DMLSelector.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AD7713348A88980F014EAFC7CEB80418 /* DMLSelector.bundle */; };
+		EAE66D5772B803EB30A20BAD573E1518 /* DMLSelectorCollectionSectionHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 4ABF24B225D421941DAEAD98D1A659C9 /* DMLSelectorCollectionSectionHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F1C1CDE3BA48D04D9CFBB2FD4276A93C /* DMLSelectorBarCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 39359EB3DD4ADB436246304F4C900354 /* DMLSelectorBarCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6982894303C634800A937AFBCC160B1 /* Checked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD6F4D4709E08BC493D23367420094DC /* Checked@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		38AF8C095131437B2D5BCF9C1A487C4C /* PBXContainerItemProxy */ = {
+		5D08014F1C5E851A5879FF1CEB537908 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8314A67348C0B10612E2005D292539BE;
+			remoteGlobalIDString = E0C85BE57E89AE29CBE65EADB60B1ABD;
 			remoteInfo = "DMLSelector-DMLSelector";
 		};
 		72ABE4DA78C3BD42BA06B829B095E684 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C452099A7A7D4598766C473A171FDFC0;
+			remoteGlobalIDString = 36752BEC07084DA106A9A16FCCD447C5;
 			remoteInfo = DMLSelector;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05C48426146CBC42F5C6EE083129E0F5 /* DMLSelectorComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponent.h; sourceTree = "<group>"; };
+		0558A969A3F2946B160EBA242244B7EE /* DMLSelectorComponentDoubleTable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponentDoubleTable.h; sourceTree = "<group>"; };
 		08A6E5B10B1DCF57B21D8596C96245EB /* Pods-DMLSelector_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-DMLSelector_Example.modulemap"; sourceTree = "<group>"; };
 		0BB6160A99593C5D9D1D4E5FB59BAAFE /* Pods-DMLSelector_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DMLSelector_Example-dummy.m"; sourceTree = "<group>"; };
+		1017C646E65A674DC05D438519473344 /* DMLSelectorComponentSingleTable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponentSingleTable.h; sourceTree = "<group>"; };
 		1228A0FB805C3B977A018E73F1A679A4 /* Pods-DMLSelector_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DMLSelector_Example-frameworks.sh"; sourceTree = "<group>"; };
+		12B91B7EE9ABAFDD7E997EF6E50FA75C /* DMLSelectorCollectionSectionHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorCollectionSectionHeader.m; sourceTree = "<group>"; };
+		1394DD39E91C92AB718FC23F03689C0C /* DMLSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelector.m; sourceTree = "<group>"; };
 		16AD1D861DB09F279D6B82BB1ACC88D4 /* Pods-DMLSelector_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DMLSelector_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		18EC99D067C5A154F478825B09A01B87 /* DMLSelectorComponentCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorComponentCollection.m; sourceTree = "<group>"; };
-		191BB9E126CCE93D3ED26209139BD627 /* DMLSelectorComponentDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorComponentDescriptor.m; sourceTree = "<group>"; };
+		19B3C15399AA70B2BFF7D54A8E2359B5 /* DMLSelectorComponentCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponentCollection.h; sourceTree = "<group>"; };
+		1BEE31831636D6FF0C0F8248CD4633B1 /* DMLSelectorImageBarCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorImageBarCell.m; sourceTree = "<group>"; };
 		1F98C8E6BC6CA0EEE040E158CCC43FC7 /* DMLSelector-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DMLSelector-umbrella.h"; sourceTree = "<group>"; };
+		25247D24F561D1E8C8C7A7886439E894 /* DMLSelectorBarCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorBarCell.m; sourceTree = "<group>"; };
 		276FD6E183E4C3C19CDD04E902953737 /* Pods-DMLSelector_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DMLSelector_Example-umbrella.h"; sourceTree = "<group>"; };
-		29F05AC35E588D4951609098D636939C /* DMLSelectorBarCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorBarCell.h; sourceTree = "<group>"; };
+		2998DAFB07553C622529B7E94C89F67E /* UpArrow@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "UpArrow@2x.png"; sourceTree = "<group>"; };
 		2AADABD5847C0AA9FA7D9A3E63CA0BAA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3031C711D789B651452F6DBBCA15C69C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B6B1FEF7C242D6E592555F38BABAD02 /* DMLSelectorIndexPath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorIndexPath.h; sourceTree = "<group>"; };
+		39359EB3DD4ADB436246304F4C900354 /* DMLSelectorBarCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorBarCell.h; sourceTree = "<group>"; };
 		3C0E86AB46211C5D77F034A0A063A746 /* Pods-DMLSelector_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DMLSelector_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		3C3B252A60D94784FD002BBF30916EBB /* DMLSelectorComponentSingleTable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponentSingleTable.h; sourceTree = "<group>"; };
+		3CDB30E6CA98E52110B20CB377908536 /* DMLSelectorComponentCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorComponentCollection.m; sourceTree = "<group>"; };
 		3F4B8FDB813AD64FAC709D7448713ED0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41AE75876B597B05EE42FAB9A16D287F /* UpArrow@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "UpArrow@3x.png"; sourceTree = "<group>"; };
+		47437354AF39D11327AB5165233C4784 /* DMLSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelector.h; sourceTree = "<group>"; };
 		484C801D8CDE23A45779DDB3151D19C1 /* Pods-DMLSelector_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DMLSelector_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4ABF24B225D421941DAEAD98D1A659C9 /* DMLSelectorCollectionSectionHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorCollectionSectionHeader.h; sourceTree = "<group>"; };
 		4B7F737BC54C7326254B5E32C0732E48 /* Pods_DMLSelector_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DMLSelector_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EDDF871A43628387C0606259682AC04 /* Pods-DMLSelector_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DMLSelector_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		503176534571F287FF2D539D3543A3F2 /* Pods_DMLSelector_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DMLSelector_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51DD44A38A2304CEC7411C1EAB12F1F8 /* UIColor+DMLSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DMLSelector.m"; sourceTree = "<group>"; };
+		552BD06E74649989D1B53FCD9CF62BBB /* DMLSelectorComponentCollectionCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponentCollectionCell.h; sourceTree = "<group>"; };
 		56735E50BEDFC6C38B7EB8E1E0DBC6A4 /* Pods-DMLSelector_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DMLSelector_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		57FF13C1211F6B90220FE0235E606CEB /* DMLSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DMLSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A4257FCCF9C236AA93698FDF591560B /* DMLSelectorComponentCollectionCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorComponentCollectionCell.m; sourceTree = "<group>"; };
-		60B88CFA1B917ED0AF9DE07053D15D63 /* DMLSelectorCollectionSectionHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorCollectionSectionHeader.m; sourceTree = "<group>"; };
-		6AC8289E61F553924690321A2E5C88F9 /* Checked@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "Checked@2x.png"; sourceTree = "<group>"; };
-		6CB85EB1F8573A70A4D5FBB3C2778AE6 /* DMLSelectorComponentCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponentCollection.h; sourceTree = "<group>"; };
+		587F45021D41B14A00CA323C /* DMLSelectorBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLSelectorBar.h; sourceTree = "<group>"; };
+		59FCE1668EC3B6838CBA1E07630422DC /* DMLSelectorComponentSingleTable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorComponentSingleTable.m; sourceTree = "<group>"; };
+		6DB05250DDA171F4F047942E9AACAAAE /* DMLSelectorIndexPath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorIndexPath.m; sourceTree = "<group>"; };
+		7617FB548E6846826C9C12BE6A2FCD2C /* DMLSelectorSection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorSection.h; sourceTree = "<group>"; };
 		76FF8375B5157E22FD61034BDEBFEFB3 /* Pods-DMLSelector_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DMLSelector_Example-resources.sh"; sourceTree = "<group>"; };
-		7BA97D99D1DA80A97237F63F051B3C8E /* DMLSelectorComponentSingleTable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorComponentSingleTable.m; sourceTree = "<group>"; };
+		7A97FAC9DEF5B704E119A5BD8ED7C27C /* DMLSelectorComponentDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponentDescriptor.h; sourceTree = "<group>"; };
 		7FC1A99252580D9BC9D1F583665751E6 /* DMLSelector-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DMLSelector-prefix.pch"; sourceTree = "<group>"; };
-		84B1E072C134149672A4B619F2A1A32B /* DMLSelectorComponentDoubleTable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorComponentDoubleTable.m; sourceTree = "<group>"; };
+		8E098B472D4FBBBB41139236C555D857 /* DMLSelectorComponentCollectionCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorComponentCollectionCell.m; sourceTree = "<group>"; };
 		91C9E1A4F3F579AB6877B0A38D9C8D7D /* Pods-DMLSelector_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DMLSelector_Example.release.xcconfig"; sourceTree = "<group>"; };
+		92172D89C067BCF74EE3A0CDD6D2A6F8 /* DMLSelectorSection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorSection.m; sourceTree = "<group>"; };
 		92D0F2FCE5739837DEE099ED4289CEDE /* DMLSelector.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = DMLSelector.modulemap; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9C736896C126F5341209B4161BB64C13 /* DMLSelector.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DMLSelector.xcconfig; sourceTree = "<group>"; };
+		9C85BF0A5294DC1DFA53C2E0991E1DD7 /* DownArrow@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "DownArrow@3x.png"; sourceTree = "<group>"; };
 		A0B945171492C9553CD1068F3935DC31 /* Pods-DMLSelector_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DMLSelector_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		A2170F64FE0928360C6B7753144851D2 /* DMLSelectorComponentCollectionCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponentCollectionCell.h; sourceTree = "<group>"; };
-		A30EDDD56F5EEDCF8C9C1E8AEFC3D5AE /* DMLSelector.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelector.m; sourceTree = "<group>"; };
 		A65EF4DAC4D009584BA01B7723410525 /* Pods-DMLSelector_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DMLSelector_Tests-dummy.m"; sourceTree = "<group>"; };
 		AA5508FA975F1DBCC4C82304EA714B3B /* Pods-DMLSelector_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-DMLSelector_Tests.modulemap"; sourceTree = "<group>"; };
-		AA7EC2631EAF436EC058698FC6E050F6 /* Checked@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "Checked@3x.png"; sourceTree = "<group>"; };
 		AC6DDBD4D2D1294E4A3DB48984CBA5A9 /* DMLSelector-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DMLSelector-dummy.m"; sourceTree = "<group>"; };
 		AD7713348A88980F014EAFC7CEB80418 /* DMLSelector.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DMLSelector.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		B15FDF3477C9CF2053B12F971D1F6E2C /* DMLSelectorOption.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorOption.m; sourceTree = "<group>"; };
 		B94104FD92E717353151318B8795286F /* Pods-DMLSelector_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DMLSelector_Tests-resources.sh"; sourceTree = "<group>"; };
+		B98B2ACDDE15C8AE03EFF100BB6F2245 /* DMLSelectorIndexPath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorIndexPath.h; sourceTree = "<group>"; };
+		BD6F4D4709E08BC493D23367420094DC /* Checked@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "Checked@3x.png"; sourceTree = "<group>"; };
+		C3B9E3CB1B40065C0D3963A0A5EF083B /* DMLSelectorComponentDoubleTable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorComponentDoubleTable.m; sourceTree = "<group>"; };
 		C8027B2609D3A9FCEE0EA0F6EFF9985D /* Pods-DMLSelector_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DMLSelector_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		C850F1B97DFC4B6F7492E71540DB5F8E /* DMLSelectorComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponent.h; sourceTree = "<group>"; };
 		C915D75CF5998DEDE95BFF6EEEA8FFBF /* ResourceBundle-DMLSelector-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-DMLSelector-Info.plist"; sourceTree = "<group>"; };
+		CAFC5198930D27D38671D354B2744403 /* DownArrow@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "DownArrow@2x.png"; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D50258E00AB1DAE7515EA0AC5E351D5C /* DMLSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelector.h; sourceTree = "<group>"; };
+		D68C5921B1569C1E064EAD8AD5F7E1A9 /* DMLSelectorComponentDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorComponentDescriptor.m; sourceTree = "<group>"; };
 		D7222B4038A795C12AF65EE4F1FB2CF3 /* Pods-DMLSelector_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DMLSelector_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		DEF18D74AF7032C5E32E8B45EE94D57E /* DMLSelectorOption.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorOption.h; sourceTree = "<group>"; };
-		E1D10641EBFC4493958CD14115D87F12 /* DMLSelectorComponentDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponentDescriptor.h; sourceTree = "<group>"; };
-		E75320185C875B8685E9C1DFD3085C47 /* DMLSelectorComponentDoubleTable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorComponentDoubleTable.h; sourceTree = "<group>"; };
+		DAA08A8DF40F4D0939D731562E7064A6 /* UIColor+DMLSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+DMLSelector.h"; sourceTree = "<group>"; };
+		DDC830F7F17777ABC0EA22FF0DC83017 /* DMLSelectorImageBarCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorImageBarCell.h; sourceTree = "<group>"; };
 		EA2A8610D81726F5BFC1AECA2FA355D0 /* Pods-DMLSelector_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DMLSelector_Tests-umbrella.h"; sourceTree = "<group>"; };
-		F7338387DDDCE8FE99D593F24FD49CFF /* DMLSelectorBarCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorBarCell.m; sourceTree = "<group>"; };
-		FC282812DCD2B20B98796F7E14AAFAA7 /* DMLSelectorCollectionSectionHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DMLSelectorCollectionSectionHeader.h; sourceTree = "<group>"; };
-		FDF5FC5A5420BECDDBD24E1E84274908 /* DMLSelectorIndexPath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DMLSelectorIndexPath.m; sourceTree = "<group>"; };
+		EA2AEC31AEF739B1AE2917E08D91749E /* Checked@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "Checked@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,18 +145,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		949B0C19888EC8F076260815F32A3F54 /* Frameworks */ = {
+		793DD9655CE7CCE0D7B587A55F735721 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55AC518B6BBDE60E96DEFFC01214963A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		96C31CDCB7BFCC05E8E86C73058B9585 /* Frameworks */ = {
+		DF0112AFAC8AE012995FDE9E4F671088 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A488F9B1663C57B9A7FD5ADC372EF22B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +171,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01421372510B5A7239F5A63B216CBD5D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				47437354AF39D11327AB5165233C4784 /* DMLSelector.h */,
+				1394DD39E91C92AB718FC23F03689C0C /* DMLSelector.m */,
+				587F45021D41B14A00CA323C /* DMLSelectorBar.h */,
+				39359EB3DD4ADB436246304F4C900354 /* DMLSelectorBarCell.h */,
+				25247D24F561D1E8C8C7A7886439E894 /* DMLSelectorBarCell.m */,
+				4ABF24B225D421941DAEAD98D1A659C9 /* DMLSelectorCollectionSectionHeader.h */,
+				12B91B7EE9ABAFDD7E997EF6E50FA75C /* DMLSelectorCollectionSectionHeader.m */,
+				C850F1B97DFC4B6F7492E71540DB5F8E /* DMLSelectorComponent.h */,
+				19B3C15399AA70B2BFF7D54A8E2359B5 /* DMLSelectorComponentCollection.h */,
+				3CDB30E6CA98E52110B20CB377908536 /* DMLSelectorComponentCollection.m */,
+				552BD06E74649989D1B53FCD9CF62BBB /* DMLSelectorComponentCollectionCell.h */,
+				8E098B472D4FBBBB41139236C555D857 /* DMLSelectorComponentCollectionCell.m */,
+				7A97FAC9DEF5B704E119A5BD8ED7C27C /* DMLSelectorComponentDescriptor.h */,
+				D68C5921B1569C1E064EAD8AD5F7E1A9 /* DMLSelectorComponentDescriptor.m */,
+				0558A969A3F2946B160EBA242244B7EE /* DMLSelectorComponentDoubleTable.h */,
+				C3B9E3CB1B40065C0D3963A0A5EF083B /* DMLSelectorComponentDoubleTable.m */,
+				1017C646E65A674DC05D438519473344 /* DMLSelectorComponentSingleTable.h */,
+				59FCE1668EC3B6838CBA1E07630422DC /* DMLSelectorComponentSingleTable.m */,
+				DDC830F7F17777ABC0EA22FF0DC83017 /* DMLSelectorImageBarCell.h */,
+				1BEE31831636D6FF0C0F8248CD4633B1 /* DMLSelectorImageBarCell.m */,
+				B98B2ACDDE15C8AE03EFF100BB6F2245 /* DMLSelectorIndexPath.h */,
+				6DB05250DDA171F4F047942E9AACAAAE /* DMLSelectorIndexPath.m */,
+				7617FB548E6846826C9C12BE6A2FCD2C /* DMLSelectorSection.h */,
+				92172D89C067BCF74EE3A0CDD6D2A6F8 /* DMLSelectorSection.m */,
+				DAA08A8DF40F4D0939D731562E7064A6 /* UIColor+DMLSelector.h */,
+				51DD44A38A2304CEC7411C1EAB12F1F8 /* UIColor+DMLSelector.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		1BB62F74CFD50FA041407DC1A6A31E1D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,15 +213,6 @@
 				503176534571F287FF2D539D3543A3F2 /* Pods_DMLSelector_Tests.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		3BC0086C52C3078BCDC964CEB3446D03 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				6AC8289E61F553924690321A2E5C88F9 /* Checked@2x.png */,
-				AA7EC2631EAF436EC058698FC6E050F6 /* Checked@3x.png */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		3D0F9C0D36F2EB0CC5FEEE958F1E2889 /* Targets Support Files */ = {
@@ -201,37 +243,9 @@
 		6516C16DACA93478014883FFAF413652 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				80C1578267D33C3D02840BEC07E2DBB1 /* DMLSelector */,
+				9796B32BB26E3739F4BDAFA8E79083E1 /* DMLSelector */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		78DEA42C2A0E7263F9F9F63D4A4D148E /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				D50258E00AB1DAE7515EA0AC5E351D5C /* DMLSelector.h */,
-				A30EDDD56F5EEDCF8C9C1E8AEFC3D5AE /* DMLSelector.m */,
-				29F05AC35E588D4951609098D636939C /* DMLSelectorBarCell.h */,
-				F7338387DDDCE8FE99D593F24FD49CFF /* DMLSelectorBarCell.m */,
-				FC282812DCD2B20B98796F7E14AAFAA7 /* DMLSelectorCollectionSectionHeader.h */,
-				60B88CFA1B917ED0AF9DE07053D15D63 /* DMLSelectorCollectionSectionHeader.m */,
-				05C48426146CBC42F5C6EE083129E0F5 /* DMLSelectorComponent.h */,
-				6CB85EB1F8573A70A4D5FBB3C2778AE6 /* DMLSelectorComponentCollection.h */,
-				18EC99D067C5A154F478825B09A01B87 /* DMLSelectorComponentCollection.m */,
-				A2170F64FE0928360C6B7753144851D2 /* DMLSelectorComponentCollectionCell.h */,
-				5A4257FCCF9C236AA93698FDF591560B /* DMLSelectorComponentCollectionCell.m */,
-				E1D10641EBFC4493958CD14115D87F12 /* DMLSelectorComponentDescriptor.h */,
-				191BB9E126CCE93D3ED26209139BD627 /* DMLSelectorComponentDescriptor.m */,
-				E75320185C875B8685E9C1DFD3085C47 /* DMLSelectorComponentDoubleTable.h */,
-				84B1E072C134149672A4B619F2A1A32B /* DMLSelectorComponentDoubleTable.m */,
-				3C3B252A60D94784FD002BBF30916EBB /* DMLSelectorComponentSingleTable.h */,
-				7BA97D99D1DA80A97237F63F051B3C8E /* DMLSelectorComponentSingleTable.m */,
-				3B6B1FEF7C242D6E592555F38BABAD02 /* DMLSelectorIndexPath.h */,
-				FDF5FC5A5420BECDDBD24E1E84274908 /* DMLSelectorIndexPath.m */,
-				DEF18D74AF7032C5E32E8B45EE94D57E /* DMLSelectorOption.h */,
-				B15FDF3477C9CF2053B12F971D1F6E2C /* DMLSelectorOption.m */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		7A46A321E2608E770CBEE4713A1EFEB6 /* Support Files */ = {
@@ -278,14 +292,6 @@
 			path = "Target Support Files/Pods-DMLSelector_Example";
 			sourceTree = "<group>";
 		};
-		80C1578267D33C3D02840BEC07E2DBB1 /* DMLSelector */ = {
-			isa = PBXGroup;
-			children = (
-				3BC0086C52C3078BCDC964CEB3446D03 /* Assets */,
-			);
-			path = DMLSelector;
-			sourceTree = "<group>";
-		};
 		8F55B21139102C5C348D6651B0E3F302 /* Pods-DMLSelector_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,12 +313,41 @@
 		95FE10BFF7374AEDC7E3A1759F3EB17A /* DMLSelector */ = {
 			isa = PBXGroup;
 			children = (
-				F853C1703D05583D5A69FE4BEF69FE29 /* DMLSelector */,
+				A267F396F3F77EDEFEA2B63744946387 /* DMLSelector */,
 				6516C16DACA93478014883FFAF413652 /* Resources */,
 				7A46A321E2608E770CBEE4713A1EFEB6 /* Support Files */,
 			);
 			name = DMLSelector;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		9796B32BB26E3739F4BDAFA8E79083E1 /* DMLSelector */ = {
+			isa = PBXGroup;
+			children = (
+				A4F86CBDD2618623CAE672063FBE0244 /* Assets */,
+			);
+			path = DMLSelector;
+			sourceTree = "<group>";
+		};
+		A267F396F3F77EDEFEA2B63744946387 /* DMLSelector */ = {
+			isa = PBXGroup;
+			children = (
+				01421372510B5A7239F5A63B216CBD5D /* Classes */,
+			);
+			path = DMLSelector;
+			sourceTree = "<group>";
+		};
+		A4F86CBDD2618623CAE672063FBE0244 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EA2AEC31AEF739B1AE2917E08D91749E /* Checked@2x.png */,
+				BD6F4D4709E08BC493D23367420094DC /* Checked@3x.png */,
+				CAFC5198930D27D38671D354B2744403 /* DownArrow@2x.png */,
+				9C85BF0A5294DC1DFA53C2E0991E1DD7 /* DownArrow@3x.png */,
+				2998DAFB07553C622529B7E94C89F67E /* UpArrow@2x.png */,
+				41AE75876B597B05EE42FAB9A16D287F /* UpArrow@3x.png */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -321,14 +356,6 @@
 				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F853C1703D05583D5A69FE4BEF69FE29 /* DMLSelector */ = {
-			isa = PBXGroup;
-			children = (
-				78DEA42C2A0E7263F9F9F63D4A4D148E /* Classes */,
-			);
-			path = DMLSelector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,22 +369,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F9139B785FC1E28307066E77D3B6FDC /* Headers */ = {
+		1B88E8D17808FC2C4B3F29A44588C191 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F269EDC33A51C0CBA2251F13183B1660 /* DMLSelector-umbrella.h in Headers */,
-				73D83FFD1B6BEF25ABAFD0919708FC32 /* DMLSelector.h in Headers */,
-				A63A1785B4B31F36DE177D100317CEC6 /* DMLSelectorBarCell.h in Headers */,
-				A03DA991E2D0AEF086D415FDBE3A6130 /* DMLSelectorCollectionSectionHeader.h in Headers */,
-				791447DE658079190EAE99C4996EC0E2 /* DMLSelectorComponent.h in Headers */,
-				8B87B004327E34D18F85185E97AF1AC7 /* DMLSelectorComponentCollection.h in Headers */,
-				C4D1AFEDD0C44F7FB6746B767D9A1C89 /* DMLSelectorComponentCollectionCell.h in Headers */,
-				F7D0DE89F623281A5498A9D1C5ADBD39 /* DMLSelectorComponentDescriptor.h in Headers */,
-				7ABEEABF726A5F3E878DC426D420A5B2 /* DMLSelectorComponentDoubleTable.h in Headers */,
-				D9CE9407A961AD1CCA2C9A563D6C316D /* DMLSelectorComponentSingleTable.h in Headers */,
-				2CBE65747E1FC1C541F8175D01314029 /* DMLSelectorIndexPath.h in Headers */,
-				845CE79F0661F02E37155AD448DA447B /* DMLSelectorOption.h in Headers */,
+				DCFAB181A23A9BF630374EEF6AB67D31 /* DMLSelector-umbrella.h in Headers */,
+				3A52ED4BF14EBC94C006AD0F706AE623 /* DMLSelector.h in Headers */,
+				F1C1CDE3BA48D04D9CFBB2FD4276A93C /* DMLSelectorBarCell.h in Headers */,
+				EAE66D5772B803EB30A20BAD573E1518 /* DMLSelectorCollectionSectionHeader.h in Headers */,
+				874CCB780D7345267196D591F3C6BA42 /* DMLSelectorComponent.h in Headers */,
+				B46846B161FD4B9CA7A3110126035061 /* DMLSelectorComponentCollection.h in Headers */,
+				B3FA1BE2D7F37F81FD05D7DD5E10150F /* DMLSelectorComponentCollectionCell.h in Headers */,
+				B1BD3BD8F49D7508B5E621EE9CE7D502 /* DMLSelectorComponentDoubleTable.h in Headers */,
+				587F45011D41AE1200CA323C /* DMLSelectorComponentDescriptor.h in Headers */,
+				6629C4791FE8041FDC76E13A5DB8A245 /* DMLSelectorComponentSingleTable.h in Headers */,
+				26C907229263B198589D2C6C6E5972A8 /* DMLSelectorImageBarCell.h in Headers */,
+				587F45031D41B14A00CA323C /* DMLSelectorBar.h in Headers */,
+				6BE33AC394047475D8F4E0EE0198EC78 /* DMLSelectorIndexPath.h in Headers */,
+				1C23A58C3AFB9E2DF92A752BC2ACD3A0 /* DMLSelectorSection.h in Headers */,
+				8B0BA53ECFF33FE5C9FF8CB91941C269 /* UIColor+DMLSelector.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +402,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		36752BEC07084DA106A9A16FCCD447C5 /* DMLSelector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E110087F3216EBBF85419FC3CB6ECB5 /* Build configuration list for PBXNativeTarget "DMLSelector" */;
+			buildPhases = (
+				B4793BE120FDFD164D903B56D4C71AF4 /* Sources */,
+				DF0112AFAC8AE012995FDE9E4F671088 /* Frameworks */,
+				DF04D0F35098051B77391597C3BA340C /* Resources */,
+				1B88E8D17808FC2C4B3F29A44588C191 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C91CB5FC6504FFBBFCE91199500713CB /* PBXTargetDependency */,
+			);
+			name = DMLSelector;
+			productName = DMLSelector;
+			productReference = 57FF13C1211F6B90220FE0235E606CEB /* DMLSelector.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		6FB349DDF30C1C5BFCD25AEBB28BBC0E /* Pods-DMLSelector_Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D86E56ECC261D7C8C57FEC156FCDABC3 /* Build configuration list for PBXNativeTarget "Pods-DMLSelector_Tests" */;
@@ -388,23 +437,6 @@
 			productName = "Pods-DMLSelector_Tests";
 			productReference = 503176534571F287FF2D539D3543A3F2 /* Pods_DMLSelector_Tests.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		8314A67348C0B10612E2005D292539BE /* DMLSelector-DMLSelector */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B7397A9057DC65DB71F344C463760C53 /* Build configuration list for PBXNativeTarget "DMLSelector-DMLSelector" */;
-			buildPhases = (
-				2BB75204AD1EEB784397BD00AF6DE851 /* Sources */,
-				96C31CDCB7BFCC05E8E86C73058B9585 /* Frameworks */,
-				2CBDB4B66A406FF9BA52BF8558E9BDF6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "DMLSelector-DMLSelector";
-			productName = "DMLSelector-DMLSelector";
-			productReference = AD7713348A88980F014EAFC7CEB80418 /* DMLSelector.bundle */;
-			productType = "com.apple.product-type.bundle";
 		};
 		9DA0B4D3C075914C21553F13A10AB336 /* Pods-DMLSelector_Example */ = {
 			isa = PBXNativeTarget;
@@ -424,24 +456,22 @@
 			productReference = 4B7F737BC54C7326254B5E32C0732E48 /* Pods_DMLSelector_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C452099A7A7D4598766C473A171FDFC0 /* DMLSelector */ = {
+		E0C85BE57E89AE29CBE65EADB60B1ABD /* DMLSelector-DMLSelector */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E1B0F80E89A1E02AC29A87A805BF30D /* Build configuration list for PBXNativeTarget "DMLSelector" */;
+			buildConfigurationList = 4D518AA7CEF6D207F42925A059B379F0 /* Build configuration list for PBXNativeTarget "DMLSelector-DMLSelector" */;
 			buildPhases = (
-				53E763A4CB073C9AB1705549B7A7639C /* Sources */,
-				949B0C19888EC8F076260815F32A3F54 /* Frameworks */,
-				110DD2C689CD3DB15913241F996797A8 /* Resources */,
-				4F9139B785FC1E28307066E77D3B6FDC /* Headers */,
+				ABC064D3D4A62322B5011A1CD65655B2 /* Sources */,
+				793DD9655CE7CCE0D7B587A55F735721 /* Frameworks */,
+				95D20B824DE6905C2C8325A3195FA36F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C68A9D353F6EE602C8411DEB177C1CC2 /* PBXTargetDependency */,
 			);
-			name = DMLSelector;
-			productName = DMLSelector;
-			productReference = 57FF13C1211F6B90220FE0235E606CEB /* DMLSelector.framework */;
-			productType = "com.apple.product-type.framework";
+			name = "DMLSelector-DMLSelector";
+			productName = "DMLSelector-DMLSelector";
+			productReference = AD7713348A88980F014EAFC7CEB80418 /* DMLSelector.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -464,8 +494,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C452099A7A7D4598766C473A171FDFC0 /* DMLSelector */,
-				8314A67348C0B10612E2005D292539BE /* DMLSelector-DMLSelector */,
+				36752BEC07084DA106A9A16FCCD447C5 /* DMLSelector */,
+				E0C85BE57E89AE29CBE65EADB60B1ABD /* DMLSelector-DMLSelector */,
 				9DA0B4D3C075914C21553F13A10AB336 /* Pods-DMLSelector_Example */,
 				6FB349DDF30C1C5BFCD25AEBB28BBC0E /* Pods-DMLSelector_Tests */,
 			);
@@ -473,56 +503,62 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		110DD2C689CD3DB15913241F996797A8 /* Resources */ = {
+		95D20B824DE6905C2C8325A3195FA36F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4CD82C9CB5D9166234863A5E998A6BC /* DMLSelector.bundle in Resources */,
+				3F13F22B02CA0C40A13BA363866881A4 /* Checked@2x.png in Resources */,
+				F6982894303C634800A937AFBCC160B1 /* Checked@3x.png in Resources */,
+				98B355771D95186EBA7D8E688D073007 /* DownArrow@2x.png in Resources */,
+				458C495DF41E87C0B8D7768E4AD91AB3 /* DownArrow@3x.png in Resources */,
+				787F50569D726947516E62A8C7F6AF84 /* UpArrow@2x.png in Resources */,
+				B1482F1CE1E365AFD6518D5EE4B92605 /* UpArrow@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CBDB4B66A406FF9BA52BF8558E9BDF6 /* Resources */ = {
+		DF04D0F35098051B77391597C3BA340C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E0795D110D2931269550DEB8CA7AD50 /* Checked@2x.png in Resources */,
-				CB494E3FF35DB26389716A47F373C360 /* Checked@3x.png in Resources */,
+				E4B28DA5BD0128EE19054B7624C84F57 /* DMLSelector.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2BB75204AD1EEB784397BD00AF6DE851 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		53E763A4CB073C9AB1705549B7A7639C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6A47DB87B9C04B5316E16E23EE546DE1 /* DMLSelector-dummy.m in Sources */,
-				03424B6D13E031545AABE62F00E8D66E /* DMLSelector.m in Sources */,
-				12E62C85C16A271CAD500E5442476DAA /* DMLSelectorBarCell.m in Sources */,
-				4AA33F0D4BEB0A4CF940DD0133530BA4 /* DMLSelectorCollectionSectionHeader.m in Sources */,
-				C9A5E51EC2C3BF56E0FD568EB92FF643 /* DMLSelectorComponentCollection.m in Sources */,
-				7CB9565F34E3BAFF4AC648FC105273C3 /* DMLSelectorComponentCollectionCell.m in Sources */,
-				9CD17450DBBDCDDBA055AED0841CC1F5 /* DMLSelectorComponentDescriptor.m in Sources */,
-				3C500D6C8CF1E922A90BC0951E25C180 /* DMLSelectorComponentDoubleTable.m in Sources */,
-				1E353237ADE98ECCE449D141AD6D4E11 /* DMLSelectorComponentSingleTable.m in Sources */,
-				239323033E0D0E084BF8CF45899F5A60 /* DMLSelectorIndexPath.m in Sources */,
-				E41AFBBE54564936D09C2059037970DC /* DMLSelectorOption.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7D3408FFDDD1D1F1FFF486F8F8A22FF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B78E705533F737F5389E476361D79576 /* Pods-DMLSelector_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABC064D3D4A62322B5011A1CD65655B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4793BE120FDFD164D903B56D4C71AF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				329AB0DEB74DE51A77379C2EDF16A7BB /* DMLSelector-dummy.m in Sources */,
+				40691EB65C6B04E7A0CA032372FF8E4C /* DMLSelector.m in Sources */,
+				53A86672EAD5E7C0D8F6981A0A360AC9 /* DMLSelectorBarCell.m in Sources */,
+				2CC54B63A20F747206351884E5359401 /* DMLSelectorCollectionSectionHeader.m in Sources */,
+				CDE19C829B8675954027FDAA7A7561E9 /* DMLSelectorComponentCollection.m in Sources */,
+				33863CC56BD850100551A7F1272AA1B6 /* DMLSelectorComponentCollectionCell.m in Sources */,
+				415CBD4A2D6E979FD306B400ABE80121 /* DMLSelectorComponentDescriptor.m in Sources */,
+				C282EA95544647774302542ACEBF1AD8 /* DMLSelectorComponentDoubleTable.m in Sources */,
+				CD344F99A160D02B9CBC158E7D380E19 /* DMLSelectorComponentSingleTable.m in Sources */,
+				3C397D1BCF8EDCCD2110FDBFF20C8CA8 /* DMLSelectorImageBarCell.m in Sources */,
+				BE5254BC040B297C3F4E4659655AA3C5 /* DMLSelectorIndexPath.m in Sources */,
+				7922B893162959D76E780B53F4C81E8E /* DMLSelectorSection.m in Sources */,
+				75A47821882B9A0EDCE9D3CC3DF569F0 /* UIColor+DMLSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,34 +576,46 @@
 		3B27C3CE4032C3B6615147CB17EFD4E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DMLSelector;
-			target = C452099A7A7D4598766C473A171FDFC0 /* DMLSelector */;
+			target = 36752BEC07084DA106A9A16FCCD447C5 /* DMLSelector */;
 			targetProxy = 72ABE4DA78C3BD42BA06B829B095E684 /* PBXContainerItemProxy */;
 		};
-		C68A9D353F6EE602C8411DEB177C1CC2 /* PBXTargetDependency */ = {
+		C91CB5FC6504FFBBFCE91199500713CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "DMLSelector-DMLSelector";
-			target = 8314A67348C0B10612E2005D292539BE /* DMLSelector-DMLSelector */;
-			targetProxy = 38AF8C095131437B2D5BCF9C1A487C4C /* PBXContainerItemProxy */;
+			target = E0C85BE57E89AE29CBE65EADB60B1ABD /* DMLSelector-DMLSelector */;
+			targetProxy = 5D08014F1C5E851A5879FF1CEB537908 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		015625C3A7DCE232C7B6FF428ECE9A69 /* Release */ = {
+		0229BC84CCB5623113ABB4AE7832935D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C736896C126F5341209B4161BB64C13 /* DMLSelector.xcconfig */;
 			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DMLSelector";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/DMLSelector/ResourceBundle-DMLSelector-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/DMLSelector/DMLSelector-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DMLSelector/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DMLSelector/DMLSelector.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = DMLSelector;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		04E44CA0BD8611A116E8D98554479C81 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -594,64 +642,6 @@
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_DMLSelector_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		1494EB8A3290FD3BA39A895D25E752C7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C736896C126F5341209B4161BB64C13 /* DMLSelector.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DMLSelector/DMLSelector-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DMLSelector/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DMLSelector/DMLSelector.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = DMLSelector;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		2FDBB44F3A941BA8BC501ABFEE22DD5B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C736896C126F5341209B4161BB64C13 /* DMLSelector.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DMLSelector/DMLSelector-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DMLSelector/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DMLSelector/DMLSelector.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = DMLSelector;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -735,6 +725,35 @@
 			};
 			name = Debug;
 		};
+		4EE93F89CED8C19F6A6D5BD4B8F83013 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C736896C126F5341209B4161BB64C13 /* DMLSelector.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DMLSelector/DMLSelector-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DMLSelector/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DMLSelector/DMLSelector.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = DMLSelector;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		644AAEBE2E540A9123DF35942B4A5D88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3C0E86AB46211C5D77F034A0A063A746 /* Pods-DMLSelector_Example.debug.xcconfig */;
@@ -765,23 +784,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		767E94D8B7ECCF1FBB4B6344768D1108 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C736896C126F5341209B4161BB64C13 /* DMLSelector.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DMLSelector";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/DMLSelector/ResourceBundle-DMLSelector-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = DMLSelector;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -856,6 +858,40 @@
 			};
 			name = Release;
 		};
+		D9C5A11082E38FCA96F5E82F96E4808B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C736896C126F5341209B4161BB64C13 /* DMLSelector.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DMLSelector";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/DMLSelector/ResourceBundle-DMLSelector-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = DMLSelector;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		DF1FCBE0AAB944D7CC66B984DCF9053B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C736896C126F5341209B4161BB64C13 /* DMLSelector.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DMLSelector";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/DMLSelector/ResourceBundle-DMLSelector-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = DMLSelector;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -877,20 +913,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E1B0F80E89A1E02AC29A87A805BF30D /* Build configuration list for PBXNativeTarget "DMLSelector" */ = {
+		4D518AA7CEF6D207F42925A059B379F0 /* Build configuration list for PBXNativeTarget "DMLSelector-DMLSelector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2FDBB44F3A941BA8BC501ABFEE22DD5B /* Debug */,
-				1494EB8A3290FD3BA39A895D25E752C7 /* Release */,
+				DF1FCBE0AAB944D7CC66B984DCF9053B /* Debug */,
+				D9C5A11082E38FCA96F5E82F96E4808B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B7397A9057DC65DB71F344C463760C53 /* Build configuration list for PBXNativeTarget "DMLSelector-DMLSelector" */ = {
+		8E110087F3216EBBF85419FC3CB6ECB5 /* Build configuration list for PBXNativeTarget "DMLSelector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				767E94D8B7ECCF1FBB4B6344768D1108 /* Debug */,
-				015625C3A7DCE232C7B6FF428ECE9A69 /* Release */,
+				0229BC84CCB5623113ABB4AE7832935D /* Debug */,
+				4EE93F89CED8C19F6A6D5BD4B8F83013 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

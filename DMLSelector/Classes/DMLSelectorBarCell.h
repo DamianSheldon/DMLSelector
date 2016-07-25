@@ -8,19 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, DMLSelectorBarCellIndicatorDirection) {
-    DMLSelectorBarCellIndicatorDirectionUp,
-    DMLSelectorBarCellIndicatorDirectionDown
-};
+#import "DMLSelectorBar.h"
 
-@interface DMLSelectorBarCell : UICollectionViewCell
+extern NSString *const DMLSelectorBarCellIdentifier;
+
+@interface DMLSelectorBarCell : UICollectionViewCell <DMLSelectorBar>
 
 @property (nonatomic, readonly) UILabel *textLabel;
-@property (nonatomic) UIColor *selectedTextColor;
-@property (nonatomic) BOOL notDisplayArrow;
+@property (nonatomic) UIColor           *selectedTextColor;
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
-
-- (void)updateIndicatorDirection:(DMLSelectorBarCellIndicatorDirection)direction;
 
 @end
