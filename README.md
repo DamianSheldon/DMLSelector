@@ -1,11 +1,17 @@
-# DMLSelector
-
-## DMLSelector is a drop down style selector, which support select in single, double table and collection view.
 
 [![CI Status](http://img.shields.io/travis/Meiliang Dong/DMLSelector.svg?style=flat)](https://travis-ci.org/Meiliang Dong/DMLSelector)
 [![Version](https://img.shields.io/cocoapods/v/DMLSelector.svg?style=flat)](http://cocoapods.org/pods/DMLSelector)
 [![License](https://img.shields.io/cocoapods/l/DMLSelector.svg?style=flat)](http://cocoapods.org/pods/DMLSelector)
 [![Platform](https://img.shields.io/cocoapods/p/DMLSelector.svg?style=flat)](http://cocoapods.org/pods/DMLSelector)
+
+# DMLSelector
+
+## DMLSelector is a drop down style selector, which support select in single, double table and collection view.
+
+### Screenshots
+![](./Assets/Screenshot0.png)
+![](./Assets/Screenshot1.png)
+![](./Assets/Screenshot2.png)
 
 ## Features
 
@@ -29,14 +35,14 @@ selector.delegate = self;
     return self.selectorComponentDescriptors.count;
 }
 
-- (DMLSelectorComponentDescriptor *)selector:(DMLSelector *)selector componentDescriptorForOptionAtIndex:(NSUInteger)index
+- (DMLSelectorComponentDescriptor *)selector:(DMLSelector *)selector componentDescriptorForComponentAtIndex:(NSUInteger)index
 {
     return self.selectorComponentDescriptors[index];
 }
 
 // Implement delegate 
 
-- (void)selector:(DMLSelector *)selector didSelectOptionAtIndexPath:(DMLSelectorIndexPath *)indexPath
+- (void)selector:(DMLSelector *)selector didSelectComponentAtIndexPath:(DMLSelectorIndexPath *)indexPath
 {
     NSLog(@"%s\n values:%@", __func__, selector.selectorValues);
 }

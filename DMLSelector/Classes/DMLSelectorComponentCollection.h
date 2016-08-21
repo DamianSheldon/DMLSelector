@@ -10,6 +10,6 @@
 
 #import "DMLSelectorComponent.h"
 
-@interface DMLSelectorComponentCollection : UIView<DMLSelectorComponent>
+@interface DMLSelectorComponentCollection : UIView <DMLSelectorComponent>
 
 @end

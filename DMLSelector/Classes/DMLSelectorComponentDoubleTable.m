@@ -9,15 +9,15 @@
 #import "DMLSelectorComponentDoubleTable.h"
 #import "DMLSelector.h"
 
-static NSString *const  sLeftTableCellIdentifier = @"sLeftTableCellIdentifier";
-static NSString *const  sRightTableCellIdentifier = @"sRightTableCellIdentifier";
+static NSString *const sLeftTableCellIdentifier = @"sLeftTableCellIdentifier";
+static NSString *const sRightTableCellIdentifier = @"sRightTableCellIdentifier";
 
 @interface DMLSelectorComponentDoubleTable () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic) UITableView   *leftTableView;
-@property (nonatomic) UITableView   *rightTableView;
-@property (nonatomic) NSInteger     leftSelectedIndex;
-@property (nonatomic) NSInteger     rightSelectedIndex;
+@property (nonatomic) UITableView *leftTableView;
+@property (nonatomic) UITableView *rightTableView;
+@property (nonatomic) NSInteger leftSelectedIndex;
+@property (nonatomic) NSInteger rightSelectedIndex;
 
 @end
 

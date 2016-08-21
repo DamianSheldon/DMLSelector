@@ -18,10 +18,11 @@
 #import "DMLSelectorBarCell.h"
 #import "DMLSelectorImageBarCell.h"
 #import "DMLSelectorIndexPath.h"
+#import "DMLSelectorCollectionCellDescriptor.h"
 
-extern NSString *const  DMLSelectorComponentTypeSingleTable;
-extern NSString *const  DMLSelectorComponentTypeDoubleTable;
-extern NSString *const  DMLSelectorComponentTypeCollection;
+extern NSString *const DMLSelectorComponentTypeSingleTable;
+extern NSString *const DMLSelectorComponentTypeDoubleTable;
+extern NSString *const DMLSelectorComponentTypeCollection;
 
 @protocol DMLSelectorDataSource;
 @protocol DMLSelectorDelegate;
@@ -30,8 +31,8 @@ extern NSString *const  DMLSelectorComponentTypeCollection;
 
 + (NSMutableDictionary *)classesForSelectorComponentTypes;
 
-@property (nonatomic, weak) id <DMLSelectorDataSource>  dataSource;
-@property (nonatomic, weak) id <DMLSelectorDelegate>    delegate;
+@property (nonatomic, weak) id <DMLSelectorDataSource> dataSource;
+@property (nonatomic, weak) id <DMLSelectorDelegate> delegate;
 
 @property (nonatomic) CGFloat maxComponentExpanedHeight; // Default is  Screen.size.height - 128
 

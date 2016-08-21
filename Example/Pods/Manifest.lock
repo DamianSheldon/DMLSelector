@@ -1,5 +1,5 @@
 PODS:
-  - DMLSelector (0.1.5)
+  - DMLSelector (0.2.0)
 
 DEPENDENCIES:
   - DMLSelector (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DMLSelector: 39a2e3ee99c4ec56db32706ef961a524969890ca
+  DMLSelector: c116a59db9f03714c19dc4ef10415979a2f53bd8
 
 PODFILE CHECKSUM: 5f8d1b0b7a9798f26ed954c6b284a389af25cae7
 

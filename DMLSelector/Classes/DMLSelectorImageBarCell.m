@@ -14,6 +14,9 @@ NSString *const DMLSelectorImageBarCellIdentifier = @"DMLSelectorImageBarCellIde
 
 @property (nonatomic) UIImageView *imageView;
 
+@property (nonatomic) UIImage *image;
+@property (nonatomic) UIImage *highlightedImage;
+
 @end
 
 @implementation DMLSelectorImageBarCell
@@ -61,14 +64,24 @@ NSString *const DMLSelectorImageBarCellIdentifier = @"DMLSelectorImageBarCellIde
     [super configureWithComponentDescriptor:componentDescriptor];
 
     self.imageView.image = componentDescriptor.image;
-    self.imageView.highlightedImage = componentDescriptor.selectedImage;
+
+    self.image = componentDescriptor.image;
+    self.highlightedImage = componentDescriptor.selectedImage;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
 
-    self.imageView.highlighted = selected;
+    self.imageView.image = selected ? self.highlightedImage : self.image;
 }
+
+/* Note:Workaround collection cell will auto change state by
+ *    overriding a private method.
+ */
+// - (void)_setSelected:(BOOL)selected animated:(BOOL)animated
+// {
+//
+// }
 
 @end

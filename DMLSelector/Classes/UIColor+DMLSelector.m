@@ -25,4 +25,9 @@
     return [UIColor colorWithRed:241 / 255.0 green:241 / 255.0 blue:241 / 255.0 alpha:1.0];
 }
 
++ (UIColor *)dml_greenColor
+{
+    return [UIColor colorWithRed:33.0 / 255.0 green:169.0 / 255.0 blue:174.0 / 255.0 alpha:1.0];
+}
+
 @end

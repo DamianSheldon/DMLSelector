@@ -15,8 +15,8 @@ static NSString *const sSingleTableCellIdentifier = @"sSingleTableCellIdentifier
 
 @interface DMLSelectorComponentSingleTable () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic) UITableView           *tableView;
-@property (nonatomic) DMLSelectorSection    *option;
+@property (nonatomic) UITableView *tableView;
+@property (nonatomic) DMLSelectorSection *option;
 
 @end
 

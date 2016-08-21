@@ -11,18 +11,22 @@
 #import "DMLSelectorSection.h"
 #import "DMLSelector.h"
 #import "DMLSelectorCollectionSectionHeader.h"
-#import "DMLSelectorComponentCollectionCell.h"
+#import "DMLSelectorComponentDefaultCell.h"
+#import "DMLSelectorComponentSubtitleCell.h"
+#import "DMLSelectorComponentCheckboxCell.h"
 
 static NSString *sCollectionCellIdentifier = @"sCollectionCellIdentifier";
 static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeaderIdentifier";
 
 @interface DMLSelectorComponentCollection () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic) UICollectionView      *collectionView;
-@property (nonatomic) UIButton              *confirmButton;
-@property (nonatomic) NSArray               *dynamicConstraints;
-@property (nonatomic) BOOL                  setupConstraint;
-@property (nonatomic) NSMutableDictionary   *values;
+@property (nonatomic) UICollectionView *collectionView;
+@property (nonatomic) UIButton *confirmButton;
+@property (nonatomic) UIButton *resetButton;
+@property (nonatomic) NSArray *dynamicConstraints;
+@property (nonatomic) BOOL installedConstraint;
+@property (nonatomic) NSMutableDictionary *values;
+@property (nonatomic) NSMutableDictionary *cellsForCaculate;
 
 @end
 
@@ -31,6 +35,23 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 @synthesize componentDescriptor = _componentDescriptor;
 @synthesize selector = _selector;
 @synthesize componentIndex = _componentIndex;
+
++ (NSMutableDictionary *)cellClassesForCollectionView
+{
+    static NSMutableDictionary *cellClasses = nil;
+
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+            cellClasses = @{
+                DMLSelectorComponentDefaultCellIdentifier : [DMLSelectorComponentDefaultCell class],
+                DMLSelectorComponentSubtitleCellIdentifier : [DMLSelectorComponentSubtitleCell class],
+                DMLSelectorComponentCheckboxCellIdentifier : [DMLSelectorComponentCheckboxCell class]
+            };
+        });
+
+    return cellClasses;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -41,40 +62,84 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 
         _values = [NSMutableDictionary dictionaryWithCapacity:8];
 
+        _cellsForCaculate = [NSMutableDictionary dictionaryWithCapacity:8];
+
         // View hiearchy
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
 
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
         _collectionView.backgroundColor = [UIColor whiteColor];
-        [_collectionView registerClass:[DMLSelectorComponentCollectionCell class] forCellWithReuseIdentifier:sCollectionCellIdentifier];
         [_collectionView registerClass:[DMLSelectorCollectionSectionHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:sCollectionSectionHeaderIdentifier];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         [_collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
 
+        NSMutableDictionary *cellClasses = [[self class] cellClassesForCollectionView];
+        [cellClasses enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL *_Nonnull stop) {
+            [_collectionView registerClass:obj forCellWithReuseIdentifier:key];
+        }];
+
+        _resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _resetButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
+        _resetButton.contentEdgeInsets = UIEdgeInsetsMake(8, 0, 8, 0);
+        _resetButton.layer.borderWidth = 1.0f;
+        _resetButton.layer.cornerRadius = 2.0f;
+        [_resetButton setTitle:@"重置" forState:UIControlStateNormal];
+        [_resetButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_resetButton addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
+
         _confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _confirmButton.backgroundColor = [UIColor colorWithRed:101 / 255.0 green:205 / 255.0 blue:214 / 255.0 alpha:1.0];
         _confirmButton.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
-        _confirmButton.contentEdgeInsets = UIEdgeInsetsMake(2, 8, 2, 8);
-        _confirmButton.layer.cornerRadius = 4.0f;
+        _confirmButton.contentEdgeInsets = UIEdgeInsetsMake(8, 0, 8, 0);
+        _confirmButton.layer.cornerRadius = 2.0f;
         [_confirmButton setTitle:@"确定" forState:UIControlStateNormal];
+        [_confirmButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_confirmButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_confirmButton addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchUpInside];
 
         // Configure constraints
-        NSLayoutConstraint  *collectionLeftConstraint = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
-        NSLayoutConstraint  *collectionRightConstraint = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-        NSLayoutConstraint  *collectionTopConstraint = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-        NSLayoutConstraint  *collectionBottomConstraint = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_confirmButton attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+        NSLayoutConstraint *collectionLeftConstraint = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+        NSLayoutConstraint *collectionRightConstraint = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+        NSLayoutConstraint *collectionTopConstraint = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+        NSLayoutConstraint *collectionBottomConstraint = [NSLayoutConstraint constraintWithItem:_collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_confirmButton attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
 
-        NSLayoutConstraint  *confirmButtonRightConsraint = [NSLayoutConstraint constraintWithItem:_confirmButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:-10];
-        NSLayoutConstraint  *confirmButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:_confirmButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-10];
+        NSLayoutConstraint *resetButtonLeftConstraint = [NSLayoutConstraint constraintWithItem:_resetButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:10];
 
-        self.dynamicConstraints = @[collectionLeftConstraint, collectionRightConstraint, collectionTopConstraint, collectionBottomConstraint, confirmButtonRightConsraint, confirmButtonBottomConstraint];
+        NSLayoutConstraint *resetButtonRightConstraint = [NSLayoutConstraint constraintWithItem:_resetButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_confirmButton attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-8];
+
+        NSLayoutConstraint *resetButtonWidthConstraint = [NSLayoutConstraint constraintWithItem:_resetButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:_confirmButton attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0];
+
+        NSLayoutConstraint *resetButtonCenterYConstraint = [NSLayoutConstraint constraintWithItem:_resetButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_confirmButton attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
+
+        NSLayoutConstraint *confirmButtonRightConsraint = [NSLayoutConstraint constraintWithItem:_confirmButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:-10];
+        NSLayoutConstraint *confirmButtonBottomConstraint = [NSLayoutConstraint constraintWithItem:_confirmButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-10];
+
+        confirmButtonBottomConstraint.priority = UILayoutPriorityRequired - 1;
+
+        self.dynamicConstraints = @[collectionLeftConstraint, collectionRightConstraint, collectionTopConstraint, collectionBottomConstraint, confirmButtonRightConsraint, confirmButtonBottomConstraint, resetButtonLeftConstraint, resetButtonRightConstraint, resetButtonWidthConstraint, resetButtonCenterYConstraint];
     }
 
     return self;
+}
+
+- (void)updateConstraints
+{
+    if (self.confirmButton.superview) {
+        if (!self.installedConstraint) {
+            self.installedConstraint = YES;
+            [self addConstraints:self.dynamicConstraints];
+        }
+    }
+    else {
+        if (self.installedConstraint) {
+            self.installedConstraint = NO;
+
+            [self removeConstraints:self.dynamicConstraints];
+        }
+    }
+
+    [super updateConstraints];
 }
 
 #pragma mark - DMLSelectorComponent
@@ -86,12 +151,15 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 
 - (void)willAppear
 {
+    [self.resetButton setTitleColor:self.componentDescriptor.textColor forState:UIControlStateNormal];
+    self.resetButton.layer.borderColor = self.componentDescriptor.textColor.CGColor;
+
+    self.confirmButton.backgroundColor = self.componentDescriptor.selectedTextColor;
+
     [self addSubview:self.collectionView];
     [self addSubview:self.confirmButton];
+    [self addSubview:self.resetButton];
 
-    [self addConstraints:self.dynamicConstraints];
-
-    //    [self layoutIfNeeded];
     [self setNeedsUpdateConstraints];
 }
 
@@ -99,8 +167,9 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 {
     [self.collectionView removeFromSuperview];
     [self.confirmButton removeFromSuperview];
+    [self.resetButton removeFromSuperview];
 
-    [self removeConstraints:self.dynamicConstraints];
+    [self setNeedsUpdateConstraints];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -119,27 +188,32 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DMLSelectorComponentCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:sCollectionCellIdentifier forIndexPath:indexPath];
+    DMLSelectorSection *section = self.componentDescriptor.sections[indexPath.section];
 
-    DMLSelectorSection *option = self.componentDescriptor.sections[indexPath.section];
+    DMLSelectorCollectionCellDescriptor *cellDescriptor = section.rowTexts[indexPath.row];
 
-    cell.textLabel.text = option.rowTexts[indexPath.row];
+    DMLSelectorComponentDefaultCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellDescriptor.cellIdentifier forIndexPath:indexPath];
+
+    [cell configureWithCellDescriptor:cellDescriptor];
 
     if (self.values.count > 0) {
-        if (indexPath.section > 0) {
-            NSMutableArray *storeValues = self.values[option.sectionText];
-            [storeValues enumerateObjectsUsingBlock:^(NSString *_Nonnull string, NSUInteger idx, BOOL *_Nonnull stop) {
-                if ([string isEqualToString:cell.textLabel.text]) {
-                    [cell setChecked:YES animated:NO];
-                }
-            }];
-        }
-        else {
-            NSString *value = self.values[option.sectionText];
+        id value = self.values[section.sectionText];
+
+        if ([value isKindOfClass:[NSString class]]) {
+            NSString *stringValue = (NSString *)value;
 
             if ([value isEqualToString:cell.textLabel.text]) {
                 [cell setChecked:YES animated:NO];
             }
+        }
+        else if ([value isKindOfClass:[NSArray class]]) {
+            NSArray *listOfValue = (NSArray *)value;
+
+            [listOfValue enumerateObjectsUsingBlock:^(NSString *_Nonnull string, NSUInteger idx, BOOL *_Nonnull stop) {
+                if ([string isEqualToString:cell.textLabel.text]) {
+                    [cell setChecked:YES animated:NO];
+                }
+            }];
         }
     }
 
@@ -172,40 +246,47 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 {
     CGSize size = CGSizeZero;
 
-    switch (indexPath.section) {
-        case 0:
-            size.width = 56.0;
-            size.height = 30.0;
-            break;
+    DMLSelectorSection *section = self.componentDescriptor.sections[indexPath.section];
 
-        case 1:
-            size.width = 72.0;
-            size.height = 30.0;
-            break;
+    DMLSelectorCollectionCellDescriptor *cellDescriptor = section.rowTexts[indexPath.row];
 
-        default:
-            break;
+    DMLSelectorComponentDefaultCell *cell = self.cellsForCaculate[cellDescriptor.cellIdentifier];
+
+    if (!cell) {
+        NSMutableDictionary *cellClasses = [[self class] cellClassesForCollectionView];
+        Class cellClass = cellClasses[cellDescriptor.cellIdentifier];
+
+        cell = [[cellClass alloc] initWithFrame:CGRectZero];
+
+        [self.cellsForCaculate setObject:cell forKey:cellDescriptor.cellIdentifier];
     }
+
+    [cell configureWithCellDescriptor:cellDescriptor];
+
+    size = cell.intrinsicContentSize;
+
     return size;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DMLSelectorComponentCollectionCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    DMLSelectorComponentDefaultCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
 
     [cell setChecked:!cell.isChecked animated:YES];
 
     DMLSelectorSection *option = self.componentDescriptor.sections[indexPath.section];
 
-    NSString    *key = option.sectionText;
-    NSString    *value = option.rowTexts[indexPath.row];
+    DMLSelectorCollectionCellDescriptor *cellDescriptor = option.rowTexts[indexPath.row];
+
+    NSString *key = option.sectionText;
+    NSString *value = cellDescriptor.text;
 
     if (option.exclusiveSelect) {
         // Section is exclusive selection
         for (NSUInteger i = 0; i < option.rowTexts.count; i++) {
             if (i != indexPath.row) {
-                NSIndexPath                         *idxPath = [NSIndexPath indexPathForRow:i inSection:indexPath.section];
-                DMLSelectorComponentCollectionCell  *cell = [collectionView cellForItemAtIndexPath:idxPath];
+                NSIndexPath *idxPath = [NSIndexPath indexPathForRow:i inSection:indexPath.section];
+                DMLSelectorComponentCheckboxCell *cell = [collectionView cellForItemAtIndexPath:idxPath];
                 [cell setChecked:NO animated:YES];
             }
         }
@@ -220,7 +301,6 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
     }
     else {
         // Update select value
-
         if (cell.isChecked) {
             // Add
             NSMutableArray *storeValues = self.values[key];
@@ -259,7 +339,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
     }
 }
 
-#pragma mark - Action
+#pragma mark - Actions
 
 - (void)confirm
 {
@@ -267,6 +347,28 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
     DMLSelectorIndexPath *indexPath = [DMLSelectorIndexPath indexPathWithComponentIndex:self.componentIndex forRow:0 inSection:0];
 
     [self.selector collapseComponentWithSelectedIndexPath:indexPath];
+}
+
+- (void)reset
+{
+    if (self.values.count > 0) {
+        NSInteger numberOfSection = self.componentDescriptor.sections.count;
+
+        for (NSUInteger i = 0; i < numberOfSection; ++i) {
+            DMLSelectorSection *section = self.componentDescriptor.sections[i];
+
+            for (NSUInteger j = 0; j < section.rowTexts.count; ++j) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:j inSection:i];
+                DMLSelectorCollectionCellDescriptor *cellDescriptor = section.rowTexts[j];
+
+                DMLSelectorComponentDefaultCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+
+                [cell setChecked:NO animated:NO];
+            }
+        }
+
+        [self.values removeAllObjects];
+    }
 }
 
 #pragma mark - Getter

@@ -16,4 +16,6 @@
 
 + (UIColor *)dml_lightGrayColor;
 
++ (UIColor *)dml_greenColor;
+
 @end

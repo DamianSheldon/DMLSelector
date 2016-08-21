@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		582C35091D66A04300DC247D /* DMLExamplesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582C35081D66A04300DC247D /* DMLExamplesViewController.m */; };
+		582C350C1D66A29E00DC247D /* DMLGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582C350B1D66A29E00DC247D /* DMLGeneralViewController.m */; };
+		582C350F1D66AB5400DC247D /* DMLSelectStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582C350E1D66AB5400DC247D /* DMLSelectStyleViewController.m */; };
 		5F92A20B4D15322F90EF6F80 /* Pods_DMLSelector_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F3E695C5968318A2830032 /* Pods_DMLSelector_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -14,7 +17,7 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* DMLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* DMLAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* DMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* DMLViewController.m */; };
+		6003F5A7195388D20070C39A /* DMLCheckboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* DMLCheckboxViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -39,6 +42,12 @@
 		2D53F4AE4111F9DC8FD023F5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		42FB0F8DFB7E96D9946790B3 /* Pods-DMLSelector_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMLSelector_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-DMLSelector_Example/Pods-DMLSelector_Example.release.xcconfig"; sourceTree = "<group>"; };
 		46856EB7C12A5CD87F2D498B /* DMLSelector.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DMLSelector.podspec; path = ../DMLSelector.podspec; sourceTree = "<group>"; };
+		582C35071D66A04300DC247D /* DMLExamplesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLExamplesViewController.h; sourceTree = "<group>"; };
+		582C35081D66A04300DC247D /* DMLExamplesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMLExamplesViewController.m; sourceTree = "<group>"; };
+		582C350A1D66A29E00DC247D /* DMLGeneralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLGeneralViewController.h; sourceTree = "<group>"; };
+		582C350B1D66A29E00DC247D /* DMLGeneralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMLGeneralViewController.m; sourceTree = "<group>"; };
+		582C350D1D66AB5400DC247D /* DMLSelectStyleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMLSelectStyleViewController.h; sourceTree = "<group>"; };
+		582C350E1D66AB5400DC247D /* DMLSelectStyleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMLSelectStyleViewController.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* DMLSelector_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DMLSelector_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -49,8 +58,8 @@
 		6003F59B195388D20070C39A /* DMLSelector-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DMLSelector-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* DMLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMLAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* DMLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMLAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* DMLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMLViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* DMLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMLViewController.m; sourceTree = "<group>"; };
+		6003F5A5195388D20070C39A /* DMLCheckboxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMLCheckboxViewController.h; sourceTree = "<group>"; };
+		6003F5A6195388D20070C39A /* DMLCheckboxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMLCheckboxViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* DMLSelector_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DMLSelector_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -130,8 +139,14 @@
 			children = (
 				6003F59C195388D20070C39A /* DMLAppDelegate.h */,
 				6003F59D195388D20070C39A /* DMLAppDelegate.m */,
-				6003F5A5195388D20070C39A /* DMLViewController.h */,
-				6003F5A6195388D20070C39A /* DMLViewController.m */,
+				582C35071D66A04300DC247D /* DMLExamplesViewController.h */,
+				582C35081D66A04300DC247D /* DMLExamplesViewController.m */,
+				582C350A1D66A29E00DC247D /* DMLGeneralViewController.h */,
+				582C350B1D66A29E00DC247D /* DMLGeneralViewController.m */,
+				582C350D1D66AB5400DC247D /* DMLSelectStyleViewController.h */,
+				582C350E1D66AB5400DC247D /* DMLSelectStyleViewController.m */,
+				6003F5A5195388D20070C39A /* DMLCheckboxViewController.h */,
+				6003F5A6195388D20070C39A /* DMLCheckboxViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -387,8 +402,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* DMLAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* DMLViewController.m in Sources */,
+				582C35091D66A04300DC247D /* DMLExamplesViewController.m in Sources */,
+				6003F5A7195388D20070C39A /* DMLCheckboxViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				582C350F1D66AB5400DC247D /* DMLSelectStyleViewController.m in Sources */,
+				582C350C1D66A29E00DC247D /* DMLGeneralViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

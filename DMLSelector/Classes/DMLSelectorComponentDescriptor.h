@@ -19,15 +19,15 @@ typedef NS_ENUM (NSUInteger, DMLSelectorComponentInteractionStyle) {
 
 @property (nonatomic, readonly, copy) NSString *componentType;
 
-@property (nonatomic, copy) NSString    *title;
-@property (nonatomic) UIImage           *image;                                                 // Default  is DownArrow
-@property (nonatomic) UIImage           *selectedImage;                                         // Default is UpArrow
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic) UIImage *image;                                                           // Default  is DownArrow
+@property (nonatomic) UIImage *selectedImage;                                                   // Default is UpArrow
 
-@property (nonatomic, copy) NSString                        *componentCellIdentifier;           // Default value is DMLSelectorImageBarCellIdentifier
-@property (nonatomic) DMLSelectorComponentInteractionStyle  interactionStyle;                   // Default value is DMLSelectorComponentInteractionStyleExpand
+@property (nonatomic, copy) NSString *componentCellIdentifier;                                  // Default value is DMLSelectorImageBarCellIdentifier
+@property (nonatomic) DMLSelectorComponentInteractionStyle interactionStyle;                    // Default value is DMLSelectorComponentInteractionStyleExpand
 
-@property (nonatomic) UIColor   *textColor;                                                     // Default is blackColor
-@property (nonatomic) UIColor   *selectedTextColor;                                             // Default is dml_orangleColor
+@property (nonatomic) UIColor *textColor;                                                       // Default is blackColor
+@property (nonatomic) UIColor *selectedTextColor;                                               // Default is dml_orangleColor
 
 @property (nonatomic, getter = isUpdateComponentTitleEnable) BOOL updateComponentTitleEnable;   // Default is NO
 

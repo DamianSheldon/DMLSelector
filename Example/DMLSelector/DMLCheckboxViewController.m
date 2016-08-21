@@ -8,16 +8,16 @@
 
 #import <DMLSelector/DMLSelector.h>
 
-#import "DMLViewController.h"
+#import "DMLCheckboxViewController.h"
 
-@interface DMLViewController () <DMLSelectorDataSource, DMLSelectorDelegate>
+@interface DMLCheckboxViewController () <DMLSelectorDataSource, DMLSelectorDelegate>
 
-@property (nonatomic) DMLSelector   *selector;
-@property (nonatomic) NSArray       *selectorComponentDescriptors;
+@property (nonatomic) DMLSelector *selector;
+@property (nonatomic) NSArray *selectorComponentDescriptors;
 
 @end
 
-@implementation DMLViewController
+@implementation DMLCheckboxViewController
 
 - (void)viewDidLoad
 {
@@ -134,10 +134,40 @@
         DMLSelectorComponentDescriptor *component4 = [DMLSelectorComponentDescriptor selectorComponentDescriptorWithTitle:@"筛选" componentType:DMLSelectorComponentTypeCollection];
         component4.componentCellIdentifier = DMLSelectorBarCellIdentifier;
 
-        DMLSelectorSection *section4_0 = [[DMLSelectorSection alloc] initWithSectionText:@"仅看可下单的大师" rowTexts:@[@"是", @"否"]];
+        DMLSelectorCollectionCellDescriptor *row0_0 = [DMLSelectorCollectionCellDescriptor descriptorForCheckboxCell];
+        row0_0.text = @"是";
+        row0_0.selectedTextColor = [UIColor blackColor];
+        row0_0.selectedBorderColor = [UIColor dml_greenColor];
+
+        DMLSelectorCollectionCellDescriptor *row0_1 = [DMLSelectorCollectionCellDescriptor descriptorForCheckboxCell];
+        row0_1.text = @"否";
+        row0_1.selectedTextColor = [UIColor blackColor];
+        row0_1.selectedBorderColor = [UIColor dml_greenColor];
+
+        DMLSelectorSection *section4_0 = [[DMLSelectorSection alloc] initWithSectionText:@"仅看可下单的大师" rowTexts:@[row0_0, row0_1]];
         section4_0.exclusiveSelect = YES;
 
-        DMLSelectorSection *section4_1 = [[DMLSelectorSection alloc] initWithSectionText:@"大师等级" rowTexts:@[@"资深", @"高级", @"中级", @"初级"]];
+        DMLSelectorCollectionCellDescriptor *row1_0 = [DMLSelectorCollectionCellDescriptor descriptorForCheckboxCell];
+        row1_0.text = @"资深";
+        row1_0.selectedTextColor = [UIColor blackColor];
+        row1_0.selectedBorderColor = [UIColor dml_greenColor];
+
+        DMLSelectorCollectionCellDescriptor *row1_1 = [DMLSelectorCollectionCellDescriptor descriptorForCheckboxCell];
+        row1_1.text = @"高级";
+        row1_1.selectedTextColor = [UIColor blackColor];
+        row1_1.selectedBorderColor = [UIColor dml_greenColor];
+
+        DMLSelectorCollectionCellDescriptor *row1_2 = [DMLSelectorCollectionCellDescriptor descriptorForCheckboxCell];
+        row1_2.text = @"中级";
+        row1_2.selectedTextColor = [UIColor blackColor];
+        row1_2.selectedBorderColor = [UIColor dml_greenColor];
+
+        DMLSelectorCollectionCellDescriptor *row1_3 = [DMLSelectorCollectionCellDescriptor descriptorForCheckboxCell];
+        row1_3.text = @"初级";
+        row1_3.selectedTextColor = [UIColor blackColor];
+        row1_3.selectedBorderColor = [UIColor dml_greenColor];
+
+        DMLSelectorSection *section4_1 = [[DMLSelectorSection alloc] initWithSectionText:@"大师等级" rowTexts:@[row1_0, row1_1, row1_2, row1_3]];
         section4_1.exclusiveSelect = YES;
 
         component4.sections = @[section4_0, section4_1];

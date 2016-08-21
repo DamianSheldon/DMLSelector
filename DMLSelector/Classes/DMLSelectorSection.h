@@ -14,14 +14,10 @@
 
 @property(nonatomic, getter = isExclusiveSelect) BOOL exclusiveSelect; // Default is NO
 
-@property (nonatomic, copy) NSString    *sectionText;
-@property (nonatomic, copy) NSArray     *rowTexts;
+@property (nonatomic, readonly) NSString *sectionText;
+@property (nonatomic, readonly) NSArray *rowTexts;
 
-// Configure item for collection view
-@property(nonatomic) CGSize itemSize;                                                       // Default is 70, 30
-
-@property (nonatomic, getter = isSplitSectionText) BOOL splitSectionText;                   // Default is NO
-@property (nonatomic, copy) NSString                    *separatorCharacter;                // Default is #
+@property (nonatomic) UIImage *sectionImage;
 
 @property (nonatomic, getter = isShowSectionFooterHairLine) BOOL showSectionFooterHairLine; // Default is NO
 

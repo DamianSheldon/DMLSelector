@@ -1,6 +1,6 @@
 {
   "name": "DMLSelector",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "summary": "A drop down style selector.",
   "description": "DMLSelector is a drop down style selector which support select in single, double table and collection view.",
   "homepage": "https://github.com/DamianSheldon/DMLSelector",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/DamianSheldon/DMLSelector.git",
-    "tag": "0.1.5"
+    "tag": "0.2.0"
   },
   "platforms": {
     "ios": "8.0"

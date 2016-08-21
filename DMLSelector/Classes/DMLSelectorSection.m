@@ -8,6 +8,13 @@
 
 #import "DMLSelectorSection.h"
 
+@interface DMLSelectorSection ()
+
+@property (nonatomic, copy) NSString *sectionText;
+@property (nonatomic, copy) NSArray *rowTexts;
+
+@end
+
 @implementation DMLSelectorSection
 
 - (instancetype)initWithSectionText:(NSString *)sectionText rowTexts:(NSArray *)rowTexts

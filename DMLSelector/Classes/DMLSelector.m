@@ -19,16 +19,16 @@ static CGFloat sComponentMinHeight = 88.0f;
 @interface DMLSelector () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, getter = isExpanded) BOOL expanded;
-@property (nonatomic) UICollectionView          *selectorBarView;
-@property (nonatomic) UIView                    *wrapper;
-@property (nonatomic) NSLayoutConstraint        *wrapperHeightConstraint;
+@property (nonatomic) UICollectionView *selectorBarView;
+@property (nonatomic) UIView *wrapper;
+@property (nonatomic) NSLayoutConstraint *wrapperHeightConstraint;
 
-@property (nonatomic) NSMutableDictionary           *components;
-@property (nonatomic) NSMutableDictionary           *componentConstraints;
+@property (nonatomic) NSMutableDictionary *components;
+@property (nonatomic) NSMutableDictionary *componentConstraints;
 @property (nonatomic) UIView <DMLSelectorComponent> *currentComponent;
-@property (nonatomic) CGFloat                       previousComponentHeight;
-@property (nonatomic) NSMutableDictionary           *componentHeightConstraints;
-@property (nonatomic, copy) NSIndexPath             *lastSelectedIndexPath;
+@property (nonatomic) CGFloat previousComponentHeight;
+@property (nonatomic) NSMutableDictionary *componentHeightConstraints;
+@property (nonatomic, copy) NSIndexPath *lastSelectedIndexPath;
 
 @end
 
@@ -168,8 +168,12 @@ static CGFloat sComponentMinHeight = 88.0f;
 
     // Reset previous selected cell's state
     if (self.lastSelectedIndexPath && ([self.lastSelectedIndexPath compare:indexPath] != NSOrderedSame)) {
-        DMLSelectorBarCell *previousSelectedCell = [collectionView cellForItemAtIndexPath:self.lastSelectedIndexPath];
-        [previousSelectedCell setSelected:NO animated:YES];
+        DMLSelectorComponentDescriptor *previousComponentDescriptor = [self.dataSource selector:self componentDescriptorForComponentAtIndex:self.lastSelectedIndexPath.row];
+
+        if (previousComponentDescriptor.interactionStyle != DMLSelectorComponentInteractionStyleSelect) {
+            DMLSelectorBarCell *previousSelectedCell = [collectionView cellForItemAtIndexPath:self.lastSelectedIndexPath];
+            [previousSelectedCell setSelected:NO animated:YES];
+        }
     }
 
     DMLSelectorBarCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
@@ -375,8 +379,8 @@ static CGFloat sComponentMinHeight = 88.0f;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGRect      fullScreenRect = [UIScreen mainScreen].bounds;
-    NSInteger   numberOfItems = [self collectionView:collectionView numberOfItemsInSection:0];
+    CGRect fullScreenRect = [UIScreen mainScreen].bounds;
+    NSInteger numberOfItems = [self collectionView:collectionView numberOfItemsInSection:0];
 
     fullScreenRect.size.width = CGRectGetWidth(fullScreenRect) / numberOfItems;
 
@@ -388,14 +392,15 @@ static CGFloat sComponentMinHeight = 88.0f;
 - (void)touchesBegan:(NSSet <UITouch *> *)touches withEvent:(UIEvent *)event
 {
     if (self.currentComponent) {
+        UIView <DMLSelectorComponent> *currentComponent = self.currentComponent;
         self.currentComponent = nil;
 
         NSLayoutConstraint *componentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
         self.previousComponentHeight = componentHeightConstraint.constant;
         componentHeightConstraint.constant = 0;
 
-        if ([self.currentComponent respondsToSelector:@selector(willDisappear)]) {
-            [self.currentComponent willDisappear];
+        if ([currentComponent respondsToSelector:@selector(willDisappear)]) {
+            [currentComponent willDisappear];
         }
 
         self.wrapperHeightConstraint.constant = 0;
@@ -414,12 +419,14 @@ static CGFloat sComponentMinHeight = 88.0f;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 NSArray *previousCompentConstraints = self.componentConstraints[self.lastSelectedIndexPath];
 
-                [self.currentComponent removeFromSuperview];
+                [currentComponent removeFromSuperview];
                 [self.wrapper removeConstraints:previousCompentConstraints];
 
                 // Restore component's height
                 NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
                 previousComponentHeightConstraint.constant = self.previousComponentHeight;
+
+                self.previousComponentHeight = 0;
             });
     }
 }
@@ -437,53 +444,59 @@ static CGFloat sComponentMinHeight = 88.0f;
 
 - (void)updateComponentAtIndex:(NSUInteger)componentIndex withComponentDescriptor:(DMLSelectorComponentDescriptor *)componentDescriptor
 {
-    NSIndexPath         *indexPath = [NSIndexPath indexPathForRow:componentIndex inSection:0];
-    DMLSelectorBarCell  *cell = [self.selectorBarView cellForItemAtIndexPath:indexPath];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:componentIndex inSection:0];
+    DMLSelectorBarCell *cell = [self.selectorBarView cellForItemAtIndexPath:indexPath];
 
     [cell updateWithComponentDescriptor:componentDescriptor];
 }
 
 - (void)collapseComponentWithSelectedIndexPath:(DMLSelectorIndexPath *)indexPath
 {
-    NSIndexPath *indexPathInCollectionView = [NSIndexPath indexPathForRow:indexPath.componentIndex inSection:0];
+    if (self.currentComponent) {
+        UIView <DMLSelectorComponent> *currentComponent = self.currentComponent;
 
-    NSLayoutConstraint *componentHeightConstraint = self.componentHeightConstraints[indexPathInCollectionView];
+        self.currentComponent = nil;
+        self.lastSelectedIndexPath = nil;
 
-    self.previousComponentHeight = componentHeightConstraint.constant;
-    componentHeightConstraint.constant = 0;
+        NSIndexPath *indexPathInCollectionView = [NSIndexPath indexPathForRow:indexPath.componentIndex inSection:0];
 
-    self.currentComponent = nil;
-    self.lastSelectedIndexPath = nil;
+        NSLayoutConstraint *componentHeightConstraint = self.componentHeightConstraints[indexPathInCollectionView];
 
-    self.wrapperHeightConstraint.constant = 0;
+        self.previousComponentHeight = componentHeightConstraint.constant;
+        componentHeightConstraint.constant = 0;
 
-    [self layoutIfNeeded];
+        if ([currentComponent respondsToSelector:@selector(willDisappear)]) {
+            [currentComponent willDisappear];
+        }
 
-    self.expanded = NO;
+        self.wrapperHeightConstraint.constant = 0;
 
-    [self invalidateIntrinsicContentSize];
+        [self layoutIfNeeded];
 
-    // Reset selector bar cell's state
-    DMLSelectorBarCell *cell = [self.selectorBarView cellForItemAtIndexPath:indexPathInCollectionView];
-    [cell setSelected:NO animated:YES];
+        self.expanded = NO;
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            NSArray *previousCompentConstraints = self.componentConstraints[indexPathInCollectionView];
+        [self invalidateIntrinsicContentSize];
 
-            [self.currentComponent removeFromSuperview];
-            [self.wrapper removeConstraints:previousCompentConstraints];
+        // Reset selector bar cell's state
+        DMLSelectorBarCell *cell = [self.selectorBarView cellForItemAtIndexPath:indexPathInCollectionView];
+        [cell setSelected:NO animated:YES];
 
-            // Restore component's height
-            NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[indexPathInCollectionView];
-            previousComponentHeightConstraint.constant = self.previousComponentHeight;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                NSArray *previousCompentConstraints = self.componentConstraints[indexPathInCollectionView];
 
-            self.previousComponentHeight = 0;
+                [currentComponent removeFromSuperview];
+                [self.wrapper removeConstraints:previousCompentConstraints];
 
-            self.currentComponent = nil;
-        });
+                // Restore component's height
+                NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[indexPathInCollectionView];
+                previousComponentHeightConstraint.constant = self.previousComponentHeight;
 
-    if ([self.delegate respondsToSelector:@selector(selector:didSelectComponentAtIndexPath:)]) {
-        [self.delegate selector:self didSelectComponentAtIndexPath:indexPath];
+                self.previousComponentHeight = 0;
+            });
+
+        if ([self.delegate respondsToSelector:@selector(selector:didSelectComponentAtIndexPath:)]) {
+            [self.delegate selector:self didSelectComponentAtIndexPath:indexPath];
+        }
     }
 }
 
@@ -514,8 +527,8 @@ static CGFloat sComponentMinHeight = 88.0f;
 
             case DMLSelectorComponentInteractionStyleExpand:
                 {
-                    UIView <DMLSelectorComponent>   *component = self.components[indexPath];
-                    NSDictionary                    *v = component.componentValues;
+                    UIView <DMLSelectorComponent> *component = self.components[indexPath];
+                    NSDictionary *v = component.componentValues;
 
                     if (v) {
                         [v enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL *_Nonnull stop) {

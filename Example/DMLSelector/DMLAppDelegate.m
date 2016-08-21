@@ -7,19 +7,21 @@
 //
 
 #import "DMLAppDelegate.h"
-#import "DMLViewController.h"
+#import "DMLExamplesViewController.h"
 
 @implementation DMLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{    
-    DMLViewController *vc = [DMLViewController new];
-    
+{
+    DMLExamplesViewController *vc = [DMLExamplesViewController new];
+
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = vc;
+    self.window.rootViewController = nvc;
     [self.window makeKeyAndVisible];
-    
+
     return YES;
 }
 
