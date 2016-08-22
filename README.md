@@ -14,7 +14,7 @@
 ![](./Assets/Screenshot2.png)
 
 ## Video
-![](./Assets/video.gif)
+![](./Assets/Video.gif)
 
 ## Features
 
