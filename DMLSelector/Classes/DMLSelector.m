@@ -225,7 +225,8 @@ static CGFloat sComponentMinHeight = 88.0f;
                 [cell setSelected:componentDescriptor.selected animated:YES];
 
                 if ([self.delegate respondsToSelector:@selector(selector:didSelectComponentAtIndexPath:)]) {
-                    [self.delegate selector:self didSelectComponentAtIndexPath:indexPath];
+                    DMLSelectorIndexPath *idxPath = [DMLSelectorIndexPath indexPathWithComponentIndex:indexPath.row forRow:0 inSection:0];
+                    [self.delegate selector:self didSelectComponentAtIndexPath:idxPath];
                 }
 
                 break;

@@ -8,10 +8,13 @@
 
 ## DMLSelector is a drop down style selector, which support select in single, double table and collection view.
 
-### Screenshots
+## Screenshots
 ![](./Assets/Screenshot0.png)
 ![](./Assets/Screenshot1.png)
 ![](./Assets/Screenshot2.png)
+
+## Video
+![](./Assets/video.gif)
 
 ## Features
 

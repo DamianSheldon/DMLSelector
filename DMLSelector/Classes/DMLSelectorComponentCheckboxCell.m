@@ -18,7 +18,6 @@ static CGFloat const sPadding = 4.0;
 @interface DMLSelectorComponentCheckboxCell ()
 
 @property (nonatomic) UIImageView *imageView;
-@property (nonatomic) UILabel *textLabel;
 
 @end
 

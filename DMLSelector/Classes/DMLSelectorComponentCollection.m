@@ -47,7 +47,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
                 DMLSelectorComponentDefaultCellIdentifier : [DMLSelectorComponentDefaultCell class],
                 DMLSelectorComponentSubtitleCellIdentifier : [DMLSelectorComponentSubtitleCell class],
                 DMLSelectorComponentCheckboxCellIdentifier : [DMLSelectorComponentCheckboxCell class]
-            };
+            }.mutableCopy;
         });
 
     return cellClasses;
@@ -202,7 +202,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
         if ([value isKindOfClass:[NSString class]]) {
             NSString *stringValue = (NSString *)value;
 
-            if ([value isEqualToString:cell.textLabel.text]) {
+            if ([stringValue isEqualToString:cell.textLabel.text]) {
                 [cell setChecked:YES animated:NO];
             }
         }
@@ -359,7 +359,6 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 
             for (NSUInteger j = 0; j < section.rowTexts.count; ++j) {
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:j inSection:i];
-                DMLSelectorCollectionCellDescriptor *cellDescriptor = section.rowTexts[j];
 
                 DMLSelectorComponentDefaultCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
 
