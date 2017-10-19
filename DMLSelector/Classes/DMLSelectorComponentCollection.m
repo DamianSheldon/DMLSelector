@@ -18,6 +18,7 @@
 static NSString *sCollectionCellIdentifier = @"sCollectionCellIdentifier";
 static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeaderIdentifier";
 
+
 @interface DMLSelectorComponentCollection () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic) UICollectionView *collectionView;
@@ -29,6 +30,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 @property (nonatomic) NSMutableDictionary *cellsForCaculate;
 
 @end
+
 
 @implementation DMLSelectorComponentCollection
 
@@ -43,12 +45,12 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-            cellClasses = @{
-                DMLSelectorComponentDefaultCellIdentifier : [DMLSelectorComponentDefaultCell class],
-                DMLSelectorComponentSubtitleCellIdentifier : [DMLSelectorComponentSubtitleCell class],
-                DMLSelectorComponentCheckboxCellIdentifier : [DMLSelectorComponentCheckboxCell class]
-            }.mutableCopy;
-        });
+        cellClasses = @{
+            DMLSelectorComponentDefaultCellIdentifier : [DMLSelectorComponentDefaultCell class],
+            DMLSelectorComponentSubtitleCellIdentifier : [DMLSelectorComponentSubtitleCell class],
+            DMLSelectorComponentCheckboxCellIdentifier : [DMLSelectorComponentCheckboxCell class]
+        }.mutableCopy;
+    });
 
     return cellClasses;
 }
@@ -117,7 +119,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 
         confirmButtonBottomConstraint.priority = UILayoutPriorityRequired - 1;
 
-        self.dynamicConstraints = @[collectionLeftConstraint, collectionRightConstraint, collectionTopConstraint, collectionBottomConstraint, confirmButtonRightConsraint, confirmButtonBottomConstraint, resetButtonLeftConstraint, resetButtonRightConstraint, resetButtonWidthConstraint, resetButtonCenterYConstraint];
+        self.dynamicConstraints = @[ collectionLeftConstraint, collectionRightConstraint, collectionTopConstraint, collectionBottomConstraint, confirmButtonRightConsraint, confirmButtonBottomConstraint, resetButtonLeftConstraint, resetButtonRightConstraint, resetButtonWidthConstraint, resetButtonCenterYConstraint ];
     }
 
     return self;
@@ -130,8 +132,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
             self.installedConstraint = YES;
             [self addConstraints:self.dynamicConstraints];
         }
-    }
-    else {
+    } else {
         if (self.installedConstraint) {
             self.installedConstraint = NO;
 
@@ -205,8 +206,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
             if ([stringValue isEqualToString:cell.textLabel.text]) {
                 [cell setChecked:YES animated:NO];
             }
-        }
-        else if ([value isKindOfClass:[NSArray class]]) {
+        } else if ([value isKindOfClass:[NSArray class]]) {
             NSArray *listOfValue = (NSArray *)value;
 
             [listOfValue enumerateObjectsUsingBlock:^(NSString *_Nonnull string, NSUInteger idx, BOOL *_Nonnull stop) {
@@ -220,9 +220,9 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
     return cell;
 }
 
-- (UICollectionReusableView *)  collectionView                      :(UICollectionView *)collectionView
-                                viewForSupplementaryElementOfKind   :(NSString *)kind
-                                atIndexPath                         :(NSIndexPath *)indexPath
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath
 {
     DMLSelectorCollectionSectionHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:sCollectionSectionHeaderIdentifier forIndexPath:indexPath];
 
@@ -235,9 +235,9 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
-- (CGSize)  collectionView                  :(UICollectionView *)collectionView
-            layout                          :(UICollectionViewLayout *)collectionViewLayout
-            referenceSizeForHeaderInSection :(NSInteger)section
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                             layout:(UICollectionViewLayout *)collectionViewLayout
+    referenceSizeForHeaderInSection:(NSInteger)section
 {
     return CGSizeMake(0, 30.0);
 }
@@ -294,12 +294,10 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
         // Update select value
         if (cell.isChecked) {
             [self.values setObject:value forKey:key];
-        }
-        else {
+        } else {
             [self.values removeObjectForKey:key];
         }
-    }
-    else {
+    } else {
         // Update select value
         if (cell.isChecked) {
             // Add
@@ -309,14 +307,12 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
                 [storeValues addObject:value];
 
                 [self.values setObject:storeValues forKey:key];
-            }
-            else {
+            } else {
                 NSMutableArray *valueArray = [NSMutableArray arrayWithCapacity:option.rowTexts.count];
                 [valueArray addObject:value];
                 [self.values setObject:valueArray forKey:key];
             }
-        }
-        else {
+        } else {
             // Remove
             NSMutableArray *storeValues = self.values[key];
             NSAssert(storeValues != nil, @"Store value must not be nil!");
@@ -331,8 +327,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
                 }];
 
                 [self.values setObject:storeValues forKey:key];
-            }
-            else {
+            } else {
                 [self.values removeObjectForKey:key];
             }
         }

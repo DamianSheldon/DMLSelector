@@ -10,12 +10,14 @@
 
 #import "DMLSelectStyleViewController.h"
 
+
 @interface DMLSelectStyleViewController () <DMLSelectorDataSource, DMLSelectorDelegate>
 
 @property (nonatomic) DMLSelector *selector;
 @property (nonatomic) NSArray *selectorComponentDescriptors;
 
 @end
+
 
 @implementation DMLSelectStyleViewController
 
@@ -87,7 +89,7 @@
         DMLSelectorComponentDescriptor *component4 = [DMLSelectorComponentDescriptor selectorComponentDescriptorWithTitle:@"距离" componentType:DMLSelectorComponentTypeCollection];
         component4.interactionStyle = DMLSelectorComponentInteractionStyleSelect;
 
-        _selectorComponentDescriptors = @[component1, component2, component3, component4];
+        _selectorComponentDescriptors = @[ component1, component2, component3, component4 ];
     }
 
     return _selectorComponentDescriptors;

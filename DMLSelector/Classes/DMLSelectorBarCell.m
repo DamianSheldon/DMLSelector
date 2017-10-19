@@ -10,11 +10,13 @@
 
 NSString *const DMLSelectorBarCellIdentifier = @"DMLSelectorBarCellIdentifier";
 
+
 @interface DMLSelectorBarCell ()
 
 @property (nonatomic) UILabel *textLabel;
 
 @end
+
 
 @implementation DMLSelectorBarCell
 
@@ -52,8 +54,7 @@ NSString *const DMLSelectorBarCellIdentifier = @"DMLSelectorBarCellIdentifier";
 {
     if (selected) {
         self.textLabel.textColor = self.selectedTextColor;
-    }
-    else {
+    } else {
         self.textLabel.textColor = [UIColor blackColor];
     }
 }

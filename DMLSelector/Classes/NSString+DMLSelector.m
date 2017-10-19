@@ -8,9 +8,10 @@
 
 #import "NSString+DMLSelector.h"
 
+
 @implementation NSString (DMLSelector)
 
-- (CGSize)dml_sizeWithAttributes:(NSDictionary <NSString *, id> *)attrs
+- (CGSize)dml_sizeWithAttributes:(NSDictionary<NSString *, id> *)attrs
 {
     CGRect fullRect = [UIScreen mainScreen].bounds;
 

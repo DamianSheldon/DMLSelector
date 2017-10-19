@@ -16,21 +16,23 @@ static CGFloat sIntrinsicContentSizeCollapseHeight = 44.0f;
 
 static CGFloat sComponentMinHeight = 88.0f;
 
+
 @interface DMLSelector () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, getter = isExpanded) BOOL expanded;
+@property (nonatomic, getter=isExpanded) BOOL expanded;
 @property (nonatomic) UICollectionView *selectorBarView;
 @property (nonatomic) UIView *wrapper;
 @property (nonatomic) NSLayoutConstraint *wrapperHeightConstraint;
 
 @property (nonatomic) NSMutableDictionary *components;
 @property (nonatomic) NSMutableDictionary *componentConstraints;
-@property (nonatomic) UIView <DMLSelectorComponent> *currentComponent;
+@property (nonatomic) UIView<DMLSelectorComponent> *currentComponent;
 @property (nonatomic) CGFloat previousComponentHeight;
 @property (nonatomic) NSMutableDictionary *componentHeightConstraints;
 @property (nonatomic, copy) NSIndexPath *lastSelectedIndexPath;
 
 @end
+
 
 @implementation DMLSelector
 
@@ -43,13 +45,13 @@ static CGFloat sComponentMinHeight = 88.0f;
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-            dml_classesForSelectorComponentTypes = [@{
-                DMLSelectorComponentTypeSingleTable : [DMLSelectorComponentSingleTable class],
-                DMLSelectorComponentTypeDoubleTable : [DMLSelectorComponentDoubleTable class],
-                DMLSelectorComponentTypeCollection : [DMLSelectorComponentCollection class]
-            }
+        dml_classesForSelectorComponentTypes = [@{
+            DMLSelectorComponentTypeSingleTable : [DMLSelectorComponentSingleTable class],
+            DMLSelectorComponentTypeDoubleTable : [DMLSelectorComponentDoubleTable class],
+            DMLSelectorComponentTypeCollection : [DMLSelectorComponentCollection class]
+        }
             mutableCopy];
-        });
+    });
     return dml_classesForSelectorComponentTypes;
 }
 
@@ -60,11 +62,11 @@ static CGFloat sComponentMinHeight = 88.0f;
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-            dml_cellClassesForSelectorBar = [@{
-                DMLSelectorBarCellIdentifier : [DMLSelectorBarCell class],
-                DMLSelectorImageBarCellIdentifier : [DMLSelectorImageBarCell class]
-            } mutableCopy];
-        });
+        dml_cellClassesForSelectorBar = [@{
+            DMLSelectorBarCellIdentifier : [DMLSelectorBarCell class],
+            DMLSelectorImageBarCellIdentifier : [DMLSelectorImageBarCell class]
+        } mutableCopy];
+    });
 
     return dml_cellClassesForSelectorBar;
 }
@@ -136,8 +138,7 @@ static CGFloat sComponentMinHeight = 88.0f;
         height = MAX(sIntrinsicContentSizeCollapseHeight, height);
 
         return CGSizeMake(UIViewNoIntrinsicMetric, height);
-    }
-    else {
+    } else {
         return CGSizeMake(UIViewNoIntrinsicMetric, sIntrinsicContentSizeCollapseHeight);
     }
 }
@@ -179,202 +180,198 @@ static CGFloat sComponentMinHeight = 88.0f;
     DMLSelectorBarCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
 
     switch (componentDescriptor.interactionStyle) {
-        case DMLSelectorComponentInteractionStyleSelect:
-            {
-                // Collapse previous expanded component
-                if (self.lastSelectedIndexPath) {
-                    NSIndexPath *lastSelectedIndexPath = self.lastSelectedIndexPath;
-                    self.lastSelectedIndexPath = nil;
+        case DMLSelectorComponentInteractionStyleSelect: {
+            // Collapse previous expanded component
+            if (self.lastSelectedIndexPath) {
+                NSIndexPath *lastSelectedIndexPath = self.lastSelectedIndexPath;
+                self.lastSelectedIndexPath = nil;
 
-                    NSLayoutConstraint *componentHeightConstraint = self.componentHeightConstraints[lastSelectedIndexPath];
-                    self.previousComponentHeight = componentHeightConstraint.constant;
-                    componentHeightConstraint.constant = 0;
+                NSLayoutConstraint *componentHeightConstraint = self.componentHeightConstraints[lastSelectedIndexPath];
+                self.previousComponentHeight = componentHeightConstraint.constant;
+                componentHeightConstraint.constant = 0;
 
-                    if ([self.currentComponent respondsToSelector:@selector(willDisappear)]) {
-                        [self.currentComponent willDisappear];
-                    }
-
-                    self.currentComponent = nil;
-
-                    self.wrapperHeightConstraint.constant = 0;
-
-                    [self layoutIfNeeded];
-
-                    DMLSelectorBarCell *previousCell = [collectionView cellForItemAtIndexPath:lastSelectedIndexPath];
-
-                    [previousCell setSelected:NO animated:YES];
-
-                    self.expanded = NO;
-
-                    [self invalidateIntrinsicContentSize];
-
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            NSArray *previousCompentConstraints = self.componentConstraints[lastSelectedIndexPath];
-
-                            // Remove previous component
-                            [self.currentComponent removeFromSuperview];
-                            [self.wrapper removeConstraints:previousCompentConstraints];
-
-                            // Restore component's height
-                            NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[lastSelectedIndexPath];
-                            previousComponentHeightConstraint.constant = self.previousComponentHeight;
-                        });
+                if ([self.currentComponent respondsToSelector:@selector(willDisappear)]) {
+                    [self.currentComponent willDisappear];
                 }
 
-                componentDescriptor.selected = !componentDescriptor.isSelected;
-                [cell setSelected:componentDescriptor.selected animated:YES];
+                self.currentComponent = nil;
 
-                if ([self.delegate respondsToSelector:@selector(selector:didSelectComponentAtIndexPath:)]) {
-                    DMLSelectorIndexPath *idxPath = [DMLSelectorIndexPath indexPathWithComponentIndex:indexPath.row forRow:0 inSection:0];
-                    [self.delegate selector:self didSelectComponentAtIndexPath:idxPath];
-                }
+                self.wrapperHeightConstraint.constant = 0;
 
-                break;
+                [self layoutIfNeeded];
+
+                DMLSelectorBarCell *previousCell = [collectionView cellForItemAtIndexPath:lastSelectedIndexPath];
+
+                [previousCell setSelected:NO animated:YES];
+
+                self.expanded = NO;
+
+                [self invalidateIntrinsicContentSize];
+
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    NSArray *previousCompentConstraints = self.componentConstraints[lastSelectedIndexPath];
+
+                    // Remove previous component
+                    [self.currentComponent removeFromSuperview];
+                    [self.wrapper removeConstraints:previousCompentConstraints];
+
+                    // Restore component's height
+                    NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[lastSelectedIndexPath];
+                    previousComponentHeightConstraint.constant = self.previousComponentHeight;
+                });
             }
 
-        case DMLSelectorComponentInteractionStyleExpand:
-            {
-                [cell setSelected:cell.selected animated:YES];
+            componentDescriptor.selected = !componentDescriptor.isSelected;
+            [cell setSelected:componentDescriptor.selected animated:YES];
 
-                UIView <DMLSelectorComponent> *component = self.components[indexPath];
+            if ([self.delegate respondsToSelector:@selector(selector:didSelectComponentAtIndexPath:)]) {
+                DMLSelectorIndexPath *idxPath = [DMLSelectorIndexPath indexPathWithComponentIndex:indexPath.row forRow:0 inSection:0];
+                [self.delegate selector:self didSelectComponentAtIndexPath:idxPath];
+            }
 
-                if (!component) {
-                    NSMutableDictionary *classes = [[self class] classesForSelectorComponentTypes];
+            break;
+        }
 
-                    Class class = classes[componentDescriptor.componentType];
-                    component = [[class alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), 0)];
-                    [component setTranslatesAutoresizingMaskIntoConstraints:NO];
+        case DMLSelectorComponentInteractionStyleExpand: {
+            [cell setSelected:cell.selected animated:YES];
 
-                    component.selector = self;
-                    component.componentDescriptor = componentDescriptor;
-                    component.componentIndex = indexPath.row;
+            UIView<DMLSelectorComponent> *component = self.components[indexPath];
 
-                    [self.components setObject:component forKey:indexPath];
+            if (!component) {
+                NSMutableDictionary *classes = [[self class] classesForSelectorComponentTypes];
+
+                Class class = classes[componentDescriptor.componentType];
+                component = [[class alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), 0)];
+                [component setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+                component.selector = self;
+                component.componentDescriptor = componentDescriptor;
+                component.componentIndex = indexPath.row;
+
+                [self.components setObject:component forKey:indexPath];
+            }
+
+            CGFloat height = [component componentHeight];
+            height = MAX(sComponentMinHeight, height);
+            height = MIN(height, self.maxComponentExpanedHeight);
+
+            // Trigger invaild intrinsic content size
+            BOOL trigger = NO;
+
+            if (self.currentComponent == component) {
+                trigger = YES;
+            } else if (!self.currentComponent) {
+                trigger = YES;
+            }
+
+            // Collapse previous component if need
+            void (^collapasePreviousComponent)(BOOL deselected) = ^(BOOL deselected) {
+                NSLayoutConstraint *componentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
+                self.previousComponentHeight = componentHeightConstraint.constant;
+                componentHeightConstraint.constant = 0;
+
+                if ([self.currentComponent respondsToSelector:@selector(willDisappear)]) {
+                    [self.currentComponent willDisappear];
                 }
 
-                CGFloat height = [component componentHeight];
-                height = MAX(sComponentMinHeight, height);
-                height = MIN(height, self.maxComponentExpanedHeight);
+                self.currentComponent = nil;
 
-                // Trigger invaild intrinsic content size
-                BOOL trigger = NO;
+                self.wrapperHeightConstraint.constant = 0;
 
-                if (self.currentComponent == component) {
-                    trigger = YES;
-                }
-                else if (!self.currentComponent) {
-                    trigger = YES;
+                [self layoutIfNeeded];
+
+                if (deselected) {
+                    [cell setSelected:NO animated:NO];
                 }
 
-                // Collapse previous component if need
-                void (^collapasePreviousComponent)(BOOL deselected) = ^(BOOL deselected) {
-                    NSLayoutConstraint *componentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
-                    self.previousComponentHeight = componentHeightConstraint.constant;
-                    componentHeightConstraint.constant = 0;
+                self.expanded = NO;
 
-                    if ([self.currentComponent respondsToSelector:@selector(willDisappear)]) {
-                        [self.currentComponent willDisappear];
-                    }
+                if (trigger) {
+                    [self invalidateIntrinsicContentSize];
+                }
+            };
 
-                    self.currentComponent = nil;
+            if (self.currentComponent == component) {
+                // Collapse already selected component
+                collapasePreviousComponent(YES);
 
-                    self.wrapperHeightConstraint.constant = 0;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    NSArray *previousCompentConstraints = self.componentConstraints[self.lastSelectedIndexPath];
 
-                    [self layoutIfNeeded];
+                    // Remove previous component
+                    [self.currentComponent removeFromSuperview];
+                    [self.wrapper removeConstraints:previousCompentConstraints];
 
-                    if (deselected) {
-                        [cell setSelected:NO animated:NO];
-                    }
+                    // Restore component's height
+                    NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
+                    previousComponentHeightConstraint.constant = self.previousComponentHeight;
 
-                    self.expanded = NO;
+                    self.lastSelectedIndexPath = nil;
+                });
+            } else {
+                // Collapase previous component
+                if (self.currentComponent) {
+                    collapasePreviousComponent(NO);
+                }
+
+                // Expand current select component
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    self.expanded = YES;
 
                     if (trigger) {
                         [self invalidateIntrinsicContentSize];
                     }
-                };
 
-                if (self.currentComponent == component) {
-                    // Collapse already selected component
-                    collapasePreviousComponent(YES);
+                    // Remove previous component
+                    NSArray *previousCompentConstraints = self.componentConstraints[self.lastSelectedIndexPath];
 
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            NSArray *previousCompentConstraints = self.componentConstraints[self.lastSelectedIndexPath];
+                    [self.currentComponent removeFromSuperview];
+                    [self.wrapper removeConstraints:previousCompentConstraints];
 
-                            // Remove previous component
-                            [self.currentComponent removeFromSuperview];
-                            [self.wrapper removeConstraints:previousCompentConstraints];
+                    // Restore component's height
+                    NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
+                    previousComponentHeightConstraint.constant = self.previousComponentHeight;
 
-                            // Restore component's height
-                            NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
-                            previousComponentHeightConstraint.constant = self.previousComponentHeight;
+                    self.currentComponent = component;
+                    self.lastSelectedIndexPath = indexPath;
 
-                            self.lastSelectedIndexPath = nil;
-                        });
-                }
-                else {
-                    // Collapase previous component
-                    if (self.currentComponent) {
-                        collapasePreviousComponent(NO);
+                    [self.wrapper addSubview:component];
+
+                    // Constraint
+                    NSArray *constraints = self.componentConstraints[indexPath];
+
+                    if (!constraints) {
+                        NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:component attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.wrapper attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
+                        NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:component attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.wrapper attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
+                        NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:component attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.wrapper attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+                        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:component attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.wrapper attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0];
+
+                        constraints = @[ leftConstraint, rightConstraint, topConstraint, heightConstraint ];
+
+                        [self.componentConstraints setObject:constraints forKey:indexPath];
+                        [self.componentHeightConstraints setObject:heightConstraint forKey:indexPath];
                     }
 
-                    // Expand current select component
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            self.expanded = YES;
+                    [self.wrapper addConstraints:constraints];
 
-                            if (trigger) {
-                                [self invalidateIntrinsicContentSize];
+                    [UIView animateWithDuration:0.2 animations:^{
+                        [self layoutIfNeeded];
+                    } completion:^(BOOL finished) {
+                        self.wrapperHeightConstraint.constant = height;
+
+                        [UIView animateWithDuration:0.3 delay:0.12 options:UIViewAnimationOptionCurveLinear animations:^{
+                            [self layoutIfNeeded];
+                        } completion:^(BOOL finished) {
+                            if ([component respondsToSelector:@selector(willAppear)]) {
+                                [component willAppear];
                             }
-
-                            // Remove previous component
-                            NSArray *previousCompentConstraints = self.componentConstraints[self.lastSelectedIndexPath];
-
-                            [self.currentComponent removeFromSuperview];
-                            [self.wrapper removeConstraints:previousCompentConstraints];
-
-                            // Restore component's height
-                            NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
-                            previousComponentHeightConstraint.constant = self.previousComponentHeight;
-
-                            self.currentComponent = component;
-                            self.lastSelectedIndexPath = indexPath;
-
-                            [self.wrapper addSubview:component];
-
-                            // Constraint
-                            NSArray *constraints = self.componentConstraints[indexPath];
-
-                            if (!constraints) {
-                                NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:component attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.wrapper attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
-                                NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:component attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.wrapper attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-                                NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:component attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.wrapper attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
-                                NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:component attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.wrapper attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0];
-
-                                constraints = @[leftConstraint, rightConstraint, topConstraint, heightConstraint];
-
-                                [self.componentConstraints setObject:constraints forKey:indexPath];
-                                [self.componentHeightConstraints setObject:heightConstraint forKey:indexPath];
-                            }
-
-                            [self.wrapper addConstraints:constraints];
-
-                            [UIView animateWithDuration:0.2 animations:^{
-                                [self layoutIfNeeded];
-                            } completion:^(BOOL finished) {
-                                self.wrapperHeightConstraint.constant = height;
-
-                                [UIView animateWithDuration:0.3 delay:0.12 options:UIViewAnimationOptionCurveLinear animations:^{
-                                    [self layoutIfNeeded];
-                                } completion:^(BOOL finished) {
-                                    if ([component respondsToSelector:@selector(willAppear)]) {
-                                        [component willAppear];
-                                    }
-                                }];
-                            }];
-                        });
-                }
-
-                break;
+                        }];
+                    }];
+                });
             }
+
+            break;
+        }
     }
 }
 
@@ -390,10 +387,10 @@ static CGFloat sComponentMinHeight = 88.0f;
 
 #pragma mark - Responding to Touch Events
 
-- (void)touchesBegan:(NSSet <UITouch *> *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     if (self.currentComponent) {
-        UIView <DMLSelectorComponent> *currentComponent = self.currentComponent;
+        UIView<DMLSelectorComponent> *currentComponent = self.currentComponent;
         self.currentComponent = nil;
 
         NSLayoutConstraint *componentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
@@ -418,28 +415,31 @@ static CGFloat sComponentMinHeight = 88.0f;
         [self invalidateIntrinsicContentSize];
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                NSArray *previousCompentConstraints = self.componentConstraints[self.lastSelectedIndexPath];
+            NSArray *previousCompentConstraints = self.componentConstraints[self.lastSelectedIndexPath];
 
-                [currentComponent removeFromSuperview];
-                [self.wrapper removeConstraints:previousCompentConstraints];
+            [currentComponent removeFromSuperview];
+            [self.wrapper removeConstraints:previousCompentConstraints];
 
-                // Restore component's height
-                NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
-                previousComponentHeightConstraint.constant = self.previousComponentHeight;
+            // Restore component's height
+            NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[self.lastSelectedIndexPath];
+            previousComponentHeightConstraint.constant = self.previousComponentHeight;
 
-                self.previousComponentHeight = 0;
-            });
+            self.previousComponentHeight = 0;
+        });
     }
 }
 
-- (void)touchesMoved:(NSSet <UITouch *> *)touches withEvent:(UIEvent *)event
-{}
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+}
 
-- (void)touchesEnded:(NSSet <UITouch *> *)touches withEvent:(UIEvent *)event
-{}
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+}
 
-- (void)touchesCancelled:(NSSet <UITouch *> *)touches withEvent:(UIEvent *)event
-{}
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+}
 
 #pragma mark - Public Methods
 
@@ -454,7 +454,7 @@ static CGFloat sComponentMinHeight = 88.0f;
 - (void)collapseComponentWithSelectedIndexPath:(DMLSelectorIndexPath *)indexPath
 {
     if (self.currentComponent) {
-        UIView <DMLSelectorComponent> *currentComponent = self.currentComponent;
+        UIView<DMLSelectorComponent> *currentComponent = self.currentComponent;
 
         self.currentComponent = nil;
         self.lastSelectedIndexPath = nil;
@@ -483,17 +483,17 @@ static CGFloat sComponentMinHeight = 88.0f;
         [cell setSelected:NO animated:YES];
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                NSArray *previousCompentConstraints = self.componentConstraints[indexPathInCollectionView];
+            NSArray *previousCompentConstraints = self.componentConstraints[indexPathInCollectionView];
 
-                [currentComponent removeFromSuperview];
-                [self.wrapper removeConstraints:previousCompentConstraints];
+            [currentComponent removeFromSuperview];
+            [self.wrapper removeConstraints:previousCompentConstraints];
 
-                // Restore component's height
-                NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[indexPathInCollectionView];
-                previousComponentHeightConstraint.constant = self.previousComponentHeight;
+            // Restore component's height
+            NSLayoutConstraint *previousComponentHeightConstraint = self.componentHeightConstraints[indexPathInCollectionView];
+            previousComponentHeightConstraint.constant = self.previousComponentHeight;
 
-                self.previousComponentHeight = 0;
-            });
+            self.previousComponentHeight = 0;
+        });
 
         if ([self.delegate respondsToSelector:@selector(selector:didSelectComponentAtIndexPath:)]) {
             [self.delegate selector:self didSelectComponentAtIndexPath:indexPath];
@@ -520,27 +520,25 @@ static CGFloat sComponentMinHeight = 88.0f;
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
 
         switch (componentDescriptor.interactionStyle) {
-            case DMLSelectorComponentInteractionStyleSelect:
-                {
-                    [values setObject:@(componentDescriptor.isSelected) forKey:componentDescriptor.title];
-                    break;
+            case DMLSelectorComponentInteractionStyleSelect: {
+                [values setObject:@(componentDescriptor.isSelected) forKey:componentDescriptor.title];
+                break;
+            }
+
+            case DMLSelectorComponentInteractionStyleExpand: {
+                UIView<DMLSelectorComponent> *component = self.components[indexPath];
+                NSDictionary *v = component.componentValues;
+
+                if (v) {
+                    [v enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL *_Nonnull stop) {
+                        if (obj) {
+                            [values setObject:obj forKey:key];
+                        }
+                    }];
                 }
 
-            case DMLSelectorComponentInteractionStyleExpand:
-                {
-                    UIView <DMLSelectorComponent> *component = self.components[indexPath];
-                    NSDictionary *v = component.componentValues;
-
-                    if (v) {
-                        [v enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL *_Nonnull stop) {
-                            if (obj) {
-                                [values setObject:obj forKey:key];
-                            }
-                        }];
-                    }
-
-                    break;
-                }
+                break;
+            }
         }
     }
 

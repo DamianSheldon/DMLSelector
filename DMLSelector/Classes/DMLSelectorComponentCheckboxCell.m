@@ -15,11 +15,13 @@ NSString *const DMLSelectorComponentCheckboxCellIdentifier = @"DMLSelectorCompon
 static CGFloat const sImageViewSideLength = 26.0;
 static CGFloat const sPadding = 4.0;
 
+
 @interface DMLSelectorComponentCheckboxCell ()
 
 @property (nonatomic) UIImageView *imageView;
 
 @end
+
 
 @implementation DMLSelectorComponentCheckboxCell
 
@@ -81,8 +83,7 @@ static CGFloat const sPadding = 4.0;
     if (checked) {
         NSBundle *bundle = [NSBundle bundleForClass:[self class]];
         self.imageView.image = [UIImage imageNamed:@"DMLSelector.bundle/Checked" inBundle:bundle compatibleWithTraitCollection:nil];
-    }
-    else {
+    } else {
         self.imageView.image = nil;
     }
 

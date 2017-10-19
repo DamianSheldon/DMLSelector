@@ -13,12 +13,14 @@
 
 static NSString *const sSingleTableCellIdentifier = @"sSingleTableCellIdentifier";
 
+
 @interface DMLSelectorComponentSingleTable () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) DMLSelectorSection *option;
 
 @end
+
 
 @implementation DMLSelectorComponentSingleTable
 
@@ -68,9 +70,8 @@ static NSString *const sSingleTableCellIdentifier = @"sSingleTableCellIdentifier
 
     if ([optionText isEqualToString:self.componentDescriptor.displayTextForSelectedOption]) {
         cell.textLabel.textColor = self.componentDescriptor.selectedTextColor;
-    }
-    else {
-        cell.textLabel.textColor = self.componentDescriptor.textColor ? :[UIColor blackColor];
+    } else {
+        cell.textLabel.textColor = self.componentDescriptor.textColor ?: [UIColor blackColor];
     }
 
     cell.textLabel.text = self.option.rowTexts[indexPath.row];

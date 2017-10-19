@@ -12,6 +12,7 @@
 static NSString *const sLeftTableCellIdentifier = @"sLeftTableCellIdentifier";
 static NSString *const sRightTableCellIdentifier = @"sRightTableCellIdentifier";
 
+
 @interface DMLSelectorComponentDoubleTable () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) UITableView *leftTableView;
@@ -20,6 +21,7 @@ static NSString *const sRightTableCellIdentifier = @"sRightTableCellIdentifier";
 @property (nonatomic) NSInteger rightSelectedIndex;
 
 @end
+
 
 @implementation DMLSelectorComponentDoubleTable
 
@@ -78,15 +80,13 @@ static NSString *const sRightTableCellIdentifier = @"sRightTableCellIdentifier";
 {
     if (tableView == self.leftTableView) {
         return self.componentDescriptor.sections.count;
-    }
-    else {
+    } else {
         // Left table view select cell at index
         if (self.leftSelectedIndex < self.componentDescriptor.sections.count) {
             DMLSelectorSection *option = self.componentDescriptor.sections[self.leftSelectedIndex];
 
             return option.rowTexts.count;
-        }
-        else {
+        } else {
             return 0;
         }
     }
@@ -103,14 +103,12 @@ static NSString *const sRightTableCellIdentifier = @"sRightTableCellIdentifier";
 
         if ([option.sectionText isEqualToString:self.componentDescriptor.displayTextForSelectedOption]) {
             leftCell.backgroundColor = [UIColor whiteColor];
-        }
-        else {
+        } else {
             leftCell.backgroundColor = [UIColor dml_lightGrayColor];
         }
 
         return leftCell;
-    }
-    else {
+    } else {
         UITableViewCell *rightCell = [tableView dequeueReusableCellWithIdentifier:sRightTableCellIdentifier forIndexPath:indexPath];
 
         DMLSelectorSection *option = self.componentDescriptor.sections[self.leftSelectedIndex];
@@ -135,8 +133,7 @@ static NSString *const sRightTableCellIdentifier = @"sRightTableCellIdentifier";
         [self.leftTableView reloadData];
 
         [self.rightTableView reloadData];
-    }
-    else {
+    } else {
         DMLSelectorIndexPath *selectorIndexPath = [DMLSelectorIndexPath indexPathWithComponentIndex:self.componentIndex forRow:indexPath.row inSection:self.leftSelectedIndex];
 
         self.rightSelectedIndex = indexPath.row;

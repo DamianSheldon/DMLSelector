@@ -10,6 +10,7 @@
 
 NSString *const DMLSelectorImageBarCellIdentifier = @"DMLSelectorImageBarCellIdentifier";
 
+
 @interface DMLSelectorImageBarCell ()
 
 @property (nonatomic) UIImageView *imageView;
@@ -18,6 +19,7 @@ NSString *const DMLSelectorImageBarCellIdentifier = @"DMLSelectorImageBarCellIde
 @property (nonatomic) UIImage *highlightedImage;
 
 @end
+
 
 @implementation DMLSelectorImageBarCell
 

@@ -10,6 +10,7 @@
 
 extern NSString *const DMLSelectorImageBarCellIdentifier;
 
+
 @interface DMLSelectorImageBarCell : DMLSelectorBarCell
 
 @property (nonatomic, readonly) UIImageView *imageView;

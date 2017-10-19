@@ -12,6 +12,7 @@
 
 extern NSString *const DMLSelectorComponentDefaultCellIdentifier;
 
+
 @interface DMLSelectorComponentDefaultCell : UICollectionViewCell
 
 @property (nonatomic, readonly) UILabel *textLabel;
@@ -23,7 +24,7 @@ extern NSString *const DMLSelectorComponentDefaultCellIdentifier;
 
 @property (nonatomic, readonly) DMLSelectorCollectionCellDescriptor *cellDescriptor;
 
-@property (nonatomic, getter = isChecked) BOOL checked;
+@property (nonatomic, getter=isChecked) BOOL checked;
 
 - (void)configureWithCellDescriptor:(DMLSelectorCollectionCellDescriptor *)descriptor;
 

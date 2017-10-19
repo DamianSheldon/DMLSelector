@@ -27,12 +27,13 @@ extern NSString *const DMLSelectorComponentTypeCollection;
 @protocol DMLSelectorDataSource;
 @protocol DMLSelectorDelegate;
 
+
 @interface DMLSelector : UIView
 
 + (NSMutableDictionary *)classesForSelectorComponentTypes;
 
-@property (nonatomic, weak) id <DMLSelectorDataSource> dataSource;
-@property (nonatomic, weak) id <DMLSelectorDelegate> delegate;
+@property (nonatomic, weak) id<DMLSelectorDataSource> dataSource;
+@property (nonatomic, weak) id<DMLSelectorDelegate> delegate;
 
 @property (nonatomic) CGFloat maxComponentExpanedHeight; // Default is  Screen.size.height - 128
 

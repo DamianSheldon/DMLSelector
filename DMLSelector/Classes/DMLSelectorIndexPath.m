@@ -8,6 +8,7 @@
 
 #import "DMLSelectorIndexPath.h"
 
+
 @interface DMLSelectorIndexPath ()
 
 @property (nonatomic) NSInteger componentIndex;
@@ -15,6 +16,7 @@
 @property (nonatomic) NSInteger row;
 
 @end
+
 
 @implementation DMLSelectorIndexPath
 

@@ -12,6 +12,7 @@
 
 extern NSString *const DMLSelectorComponentCheckboxCellIdentifier;
 
+
 @interface DMLSelectorComponentCheckboxCell : DMLSelectorComponentDefaultCell
 
 @property (nonatomic, readonly) UIImageView *imageView;

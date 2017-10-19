@@ -14,6 +14,7 @@ NSString *const DMLSelectorComponentDefaultCellIdentifier = @"DMLSelectorCompone
 
 static CGFloat const sPadding = 8.0f;
 
+
 @interface DMLSelectorComponentDefaultCell ()
 
 @property (nonatomic) UILabel *textLabel;
@@ -26,6 +27,7 @@ static CGFloat const sPadding = 8.0f;
 @property (nonatomic) DMLSelectorCollectionCellDescriptor *cellDescriptor;
 
 @end
+
 
 @implementation DMLSelectorComponentDefaultCell
 
@@ -51,7 +53,7 @@ static CGFloat const sPadding = 8.0f;
         _topConstraint = [NSLayoutConstraint constraintWithItem:_textLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1.0 constant:sPadding * 0.5];
         _bottomConstraint = [NSLayoutConstraint constraintWithItem:_textLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-sPadding * 0.5];
 
-        [self.contentView addConstraints:@[_leftConstraint, _rightConstraint, _topConstraint, _bottomConstraint]];
+        [self.contentView addConstraints:@[ _leftConstraint, _rightConstraint, _topConstraint, _bottomConstraint ]];
     }
 
     return self;
