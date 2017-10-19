@@ -270,7 +270,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DMLSelectorComponentDefaultCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    DMLSelectorComponentDefaultCell *cell = (DMLSelectorComponentDefaultCell *)[collectionView cellForItemAtIndexPath:indexPath];
 
     [cell setChecked:!cell.isChecked animated:YES];
 
@@ -286,7 +286,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
         for (NSUInteger i = 0; i < option.rowTexts.count; i++) {
             if (i != indexPath.row) {
                 NSIndexPath *idxPath = [NSIndexPath indexPathForRow:i inSection:indexPath.section];
-                DMLSelectorComponentCheckboxCell *cell = [collectionView cellForItemAtIndexPath:idxPath];
+                DMLSelectorComponentCheckboxCell *cell = (DMLSelectorComponentCheckboxCell *)[collectionView cellForItemAtIndexPath:idxPath];
                 [cell setChecked:NO animated:YES];
             }
         }
@@ -355,7 +355,7 @@ static NSString *sCollectionSectionHeaderIdentifier = @"sCollectionSectionHeader
             for (NSUInteger j = 0; j < section.rowTexts.count; ++j) {
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:j inSection:i];
 
-                DMLSelectorComponentDefaultCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+                DMLSelectorComponentDefaultCell *cell = (DMLSelectorComponentDefaultCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
 
                 [cell setChecked:NO animated:NO];
             }

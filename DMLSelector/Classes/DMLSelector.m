@@ -172,12 +172,12 @@ static CGFloat sComponentMinHeight = 88.0f;
         DMLSelectorComponentDescriptor *previousComponentDescriptor = [self.dataSource selector:self componentDescriptorForComponentAtIndex:self.lastSelectedIndexPath.row];
 
         if (previousComponentDescriptor.interactionStyle != DMLSelectorComponentInteractionStyleSelect) {
-            DMLSelectorBarCell *previousSelectedCell = [collectionView cellForItemAtIndexPath:self.lastSelectedIndexPath];
+            DMLSelectorBarCell *previousSelectedCell = (DMLSelectorBarCell *)[collectionView cellForItemAtIndexPath:self.lastSelectedIndexPath];
             [previousSelectedCell setSelected:NO animated:YES];
         }
     }
 
-    DMLSelectorBarCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    DMLSelectorBarCell *cell = (DMLSelectorBarCell *)[collectionView cellForItemAtIndexPath:indexPath];
 
     switch (componentDescriptor.interactionStyle) {
         case DMLSelectorComponentInteractionStyleSelect: {
@@ -200,7 +200,7 @@ static CGFloat sComponentMinHeight = 88.0f;
 
                 [self layoutIfNeeded];
 
-                DMLSelectorBarCell *previousCell = [collectionView cellForItemAtIndexPath:lastSelectedIndexPath];
+                DMLSelectorBarCell *previousCell = (DMLSelectorBarCell *)[collectionView cellForItemAtIndexPath:lastSelectedIndexPath];
 
                 [previousCell setSelected:NO animated:YES];
 
@@ -405,7 +405,7 @@ static CGFloat sComponentMinHeight = 88.0f;
 
         [self layoutIfNeeded];
 
-        DMLSelectorBarCell *cell = [self.selectorBarView cellForItemAtIndexPath:self.lastSelectedIndexPath];
+        DMLSelectorBarCell *cell = (DMLSelectorBarCell *)[self.selectorBarView cellForItemAtIndexPath:self.lastSelectedIndexPath];
 
         [cell setSelected:NO animated:NO];
 
@@ -446,7 +446,7 @@ static CGFloat sComponentMinHeight = 88.0f;
 - (void)updateComponentAtIndex:(NSUInteger)componentIndex withComponentDescriptor:(DMLSelectorComponentDescriptor *)componentDescriptor
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:componentIndex inSection:0];
-    DMLSelectorBarCell *cell = [self.selectorBarView cellForItemAtIndexPath:indexPath];
+    DMLSelectorBarCell *cell = (DMLSelectorBarCell *)[self.selectorBarView cellForItemAtIndexPath:indexPath];
 
     [cell updateWithComponentDescriptor:componentDescriptor];
 }
@@ -479,7 +479,7 @@ static CGFloat sComponentMinHeight = 88.0f;
         [self invalidateIntrinsicContentSize];
 
         // Reset selector bar cell's state
-        DMLSelectorBarCell *cell = [self.selectorBarView cellForItemAtIndexPath:indexPathInCollectionView];
+        DMLSelectorBarCell *cell = (DMLSelectorBarCell *)[self.selectorBarView cellForItemAtIndexPath:indexPathInCollectionView];
         [cell setSelected:NO animated:YES];
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.12 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
